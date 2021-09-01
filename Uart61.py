@@ -56,6 +56,7 @@ def open_serial_connection_and_print_output():
         data = b''.join(data)
         for i in range(0, len(data), 2):
             print(binascii.hexlify(data[i:i+2]))
+        print('########################')
         # print('data', data.hex())
     # while True:
     #   # ser.read_until(binascii.hexlify(b'0x55'))
