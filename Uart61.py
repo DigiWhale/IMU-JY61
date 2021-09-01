@@ -45,12 +45,12 @@ def open_serial_connection_and_print_output():
     ser.flushInput()
     # Read the output buffer
     while True:
-      ser.read_until(binascii.hexlify(b'0x55'))
-      reading = ser.read(1)
-      converted = reading.hex()
+      # ser.read_until(binascii.hexlify(b'0x55'))
+      reading = ser.readline()
+      # converted = reading.hex()
     # Print the output buffer
-
-      print(int(converted, 16))
+      print(reading)
+      # print(int(converted, 16))
     # Close the connection
     ser.close()
     print('done')
