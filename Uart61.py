@@ -12,7 +12,9 @@ def open_serial_connection_and_print_output():
     # Flush the input buffer
     ser.flushInput()
     # Read the output buffer
-    reading = ser.read(1024)
+    ser.flushInput()
+    ser.flushOutput()
+    reading = ser.read(10)
     # Print the output buffer
   
     ascii_string = reading.decode("ASCII")
