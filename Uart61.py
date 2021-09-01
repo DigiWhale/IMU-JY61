@@ -33,6 +33,7 @@
 #         do_stuff_with_sensor_data(count, status, fx, fy, fz, checksum)
 import serial
 import binascii
+from cobs import cobs
 
 def open_serial_connection_and_print_output():
     """
@@ -46,13 +47,23 @@ def open_serial_connection_and_print_output():
     ser.flushOutput()
     # Read the output buffer
     while True:
-      # ser.read_until(binascii.hexlify(b'0x55'))
-      reading = ser.read(1)
-      # converted = reading.hex()
-    # Print the output buffer
-      print(int(reading, 16))
-      # print(int(converted, 16))
-    # Close the connection
+        data = []
+        c = ser.read()
+        if c == b'':
+            break
+        while c != b'\x00' and c != b'':
+            data.append(c)
+            c = ser.read()
+        data = b''.join(data)
+        print(cobs.decode(data))
+    # while True:
+    #   # ser.read_until(binascii.hexlify(b'0x55'))
+    #   reading = ser.read(1)
+    #   # converted = reading.hex()
+    # # Print the output buffer
+    #   print(int(reading, 16))
+    #   # print(int(converted, 16))
+    # # Close the connection
     ser.close()
     print('done')
     
