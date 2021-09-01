@@ -11,7 +11,7 @@ def open_serial_connection_and_print_output():
     ser.flushInput()
     # Read the output buffer
     while True:
-      ser.read_until(bytes(b'\n'))
+      ser.read_until(bytes(b'0x55'))
       reading = ser.read(1)
     # Print the output buffer
 
