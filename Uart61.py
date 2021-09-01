@@ -14,13 +14,13 @@ def do_stuff_with_sensor_data(count, status, fx, fy, fz, checksum):
 
 with serial.Serial('/dev/ttyUSB0', **SENSOR_PARAMS) as opt_ser:
     # write sensor setup code
-    header = (170, 0, 50, 3)
-    speed = 10  # 1 = 1000 Hz, 10 = 100 Hz, ...
-    filt = 0   # don't pre-filter data
-    zero = 255
-    checksum = sum(header) + speed + filt + zero
-    payload = (*header, speed, filt, zero, *checksum.to_bytes(2, 'big', signed=False))
-    opt_ser.write(bytes(payload))
+    # header = (170, 0, 50, 3)
+    # speed = 10  # 1 = 1000 Hz, 10 = 100 Hz, ...
+    # filt = 0   # don't pre-filter data
+    # zero = 255
+    # checksum = sum(header) + speed + filt + zero
+    # payload = (*header, speed, filt, zero, *checksum.to_bytes(2, 'big', signed=False))
+    # opt_ser.write(bytes(payload))
 
     while True:
         expected_header = bytes(0x55)
