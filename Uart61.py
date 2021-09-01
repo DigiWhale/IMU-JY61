@@ -15,7 +15,7 @@ def do_stuff_with_sensor_data(count, status, fx, fy, fz, checksum):
 with serial.Serial('/dev/ttyUSB0', **SENSOR_PARAMS) as opt_ser:
     # write sensor setup code
     header = (170, 0, 50, 3)
-    speed = 1  # 1 = 1000 Hz, 10 = 100 Hz, ...
+    speed = 10  # 1 = 1000 Hz, 10 = 100 Hz, ...
     filt = 0   # don't pre-filter data
     zero = 255
     checksum = sum(header) + speed + filt + zero
