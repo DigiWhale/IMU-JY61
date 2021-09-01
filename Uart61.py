@@ -1,10 +1,12 @@
 import serial
+import codecs
 
 def open_serial_connection_and_print_output():
     """
     Opens a serial connection to the Arduino and prints the output.
     :return: None
     """
+    decode_hex = codecs.getdecoder("hex_codec")
     # Open the serial connection
     ser = serial.Serial(port='/dev/ttyUSB0', baudrate=19200, bytesize=8, parity='N', stopbits=1, timeout=10)
     # Flush the input buffer
@@ -12,7 +14,7 @@ def open_serial_connection_and_print_output():
     # Read the output buffer
     reading = ser.read(1024)
     # Print the output buffer
-    print(reading.decode('utf16'))
+    print(decode_hex(reading)[0])
     # Close the connection
     ser.close()
     print('done')
