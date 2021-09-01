@@ -30,7 +30,7 @@ with serial.Serial('/dev/ttyUSB0', **SENSOR_PARAMS) as opt_ser:
             struct.unpack('>hhhhhH', opt_ser.read(12))
         )
 
-        do_stuff_with_sensor_data(fx, fy, fz)
+        do_stuff_with_sensor_data(count, status, fx, fy, fz, checksum)
 # import serial
 
 # def open_serial_connection_and_print_output():
