@@ -50,7 +50,7 @@ def open_serial_connection_and_print_output():
       converted = reading.hex()
     # Print the output buffer
 
-      print(converted)
+      print(int(converted, 16))
     # Close the connection
     ser.close()
     print('done')
