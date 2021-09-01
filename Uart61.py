@@ -12,7 +12,7 @@ def open_serial_connection_and_print_output():
     # Read the output buffer
     reading = ser.readline()
     # Print the output buffer
-    print(reading)
+    print(reading.decode())
     # Close the connection
     ser.close()
     print('done')
