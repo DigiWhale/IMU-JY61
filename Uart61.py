@@ -10,7 +10,7 @@ def open_serial_connection_and_print_output():
     # Flush the input buffer
     ser.flushInput()
     # Read the output buffer
-    reading = ser.read(1000)
+    reading = ser.read(ser.inWaiting())
     # Print the output buffer
     print(reading)
     # Close the connection
