@@ -25,6 +25,7 @@ with serial.Serial('/dev/ttyUSB0', **SENSOR_PARAMS) as opt_ser:
     while True:
         expected_header = bytes(0x55)
         opt_ser.read_until(expected_header)
+        opt_ser.read(11)
         print('found header')
         count, status, fx, fy, fz, checksum = (
             struct.unpack('>hhhhhH', opt_ser.read(12))
