@@ -17,7 +17,10 @@ def open_serial_connection_and_print_output():
     reading = ser.read(10)
     # Print the output buffer
   
-    ascii_string = reading.decode("ASCII")
+    bytes_object = bytes.fromhex(reading)
+
+
+    ascii_string = bytes_object.decode("ASCII")
     print(ascii_string)
     # Close the connection
     ser.close()
