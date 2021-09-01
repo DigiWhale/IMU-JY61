@@ -15,3 +15,4 @@ def open_serial_connection_and_print_output():
     print(ser.readline())
     # Close the connection
     ser.close()
+    print('done')
