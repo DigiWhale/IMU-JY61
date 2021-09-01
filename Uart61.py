@@ -50,7 +50,7 @@ def open_serial_connection_and_print_output():
         c = ser.read()
         if c == b'':
             break
-        while c != b'U':
+        while c != b'U' and c != b'':
             data.append(c)
             c = ser.read()
         data = b''.join(data)
