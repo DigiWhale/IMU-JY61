@@ -6,7 +6,7 @@ def open_serial_connection_and_print_output():
     :return: None
     """
     # Open the serial connection
-    ser = serial.Serial(port='/dev/ttyUSB0', baudrate=19200, bytesize=8, parity='N', stopbits=1, timeout=1)
+    ser = serial.Serial(port='/dev/ttyUSB0', baudrate=19200, bytesize=8, parity='N', stopbits=1, timeout=10)
     # Flush the input buffer
     ser.flushInput()
     # Read the output buffer
