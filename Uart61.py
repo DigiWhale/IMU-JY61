@@ -9,8 +9,8 @@ SENSOR_PARAMS = {
     'bytesize': serial.EIGHTBITS,
 }
 
-def do_stuff_with_sensor_data(x, y, z):
-    print(x, y, z)
+def do_stuff_with_sensor_data(count, status, fx, fy, fz, checksum):
+    print(count, status, fx, fy, fz, checksum)
 
 with serial.Serial('/dev/ttyUSB0', **SENSOR_PARAMS) as opt_ser:
     # write sensor setup code
