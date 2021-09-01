@@ -10,9 +10,9 @@ def open_serial_connection_and_print_output():
     # Flush the input buffer
     ser.flushInput()
     # Read the output buffer
-    reading = ser.readline()
+    reading = ser.read(1024)
     # Print the output buffer
-    print(reading.decode())
+    print(reading)
     # Close the connection
     ser.close()
     print('done')
