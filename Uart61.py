@@ -43,6 +43,7 @@ def open_serial_connection_and_print_output():
     ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=10)
     # Flush the input buffer
     ser.flushInput()
+    ser.flushOutput()
     # Read the output buffer
     while True:
       # ser.read_until(binascii.hexlify(b'0x55'))
