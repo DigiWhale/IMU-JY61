@@ -47,7 +47,7 @@ def open_serial_connection_and_print_output():
     while True:
       ser.read_until(bytes(b'0x55'))
       reading = ser.read(1)
-      converted = binascii.hexlify(reading).decode('ascii')
+      converted = binascii.hexlify(reading)
     # Print the output buffer
 
       print(converted)
