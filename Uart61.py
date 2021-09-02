@@ -39,7 +39,7 @@ def open_serial_connection_and_print_output():
           # pass
           print(data[i:i+2])
           x=binascii.hexlify(data[i:i+2])
-          binaryToDecimal(int(x.decode('UTF-8'), 16))
+          binaryToDecimal(int(x.decode('UTF-8'), 16))/32768*16
           # print(binascii.hexlify(data[i:i+2]))
           # # read 1st bit to identify sensor message
           # sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
