@@ -58,7 +58,7 @@ def open_serial_connection_and_print_output():
           sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
           hex_value = b'0x' + binascii.hexlify(data[i:i+1])
           # print('hex_value',  hex_value.decode('UTF-8'))
-          string = int(hex_value.decode('UTF-8'), 16)
+          string = int(hex_value.decode('UTF-8'), 8)
           bit_string = "{:08b}".format(string)
           shifted = (string << 8)
           shifted_bit_string = "{:08b}".format(shifted)
