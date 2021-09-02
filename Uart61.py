@@ -50,7 +50,7 @@ def open_serial_connection_and_print_output():
             print('accel')
             if sign == '1':
               # accel.append(-signed/32768*2*16)
-              print(-signed/32768*16)
+              print(-((signed/(32768*2))*16))
               print(low_byte, high_byte, low_string, high_string, high_shifted_bit_string, low_shifted, combined, signed)
             else:
               print(signed/32768*16)
