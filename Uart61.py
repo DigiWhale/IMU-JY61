@@ -44,7 +44,7 @@ def open_serial_connection_and_print_output():
           #collect the sign from the first bit
           sign = "{:016b}".format(combined)[:1]
           #collect the value from the last 15 bits -32768 to +32767
-          signed = int("{:016b}".format(combined)[1:], 2)
+          signed = int("{:016b}".format(combined)[:], 2)
           if sensor == "51":
             print('accel')
             if sign == '1':
