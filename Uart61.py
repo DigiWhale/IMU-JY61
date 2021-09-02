@@ -37,7 +37,7 @@ def open_serial_connection_and_print_output():
           high_shifted = (high_string << 8)
           #convert new 16 bit high byte to b''
           high_shifted_bit_string = "{:016b}".format(high_shifted)
-          # add zeros to the front of the low byte b'' ex. 11010011 -> 0000000011010011
+          # add zeros to the front of the low byte b'' to match len of high byte b'' ex. 11010011 -> 0000000011010011
           low_shifted = low_bit_string.zfill(len(high_shifted_bit_string))
           # bitwise OR operation between high and low b'' ex 1101001100000000 | 0000000011010011 = 1101001111010011
           combined = (int(high_shifted_bit_string, 2)) | (int(low_shifted, 2))
@@ -64,7 +64,7 @@ def open_serial_connection_and_print_output():
             else:
               print(signed/32768*180)
         print('########################')
-        time.sleep(0.4)
+        time.sleep(0.1)
     ser.close()
     print('done')
     
