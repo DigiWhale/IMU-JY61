@@ -57,8 +57,8 @@ def open_serial_connection_and_print_output():
         for i in range(1, len(data), 1):
           hex_value = binascii.hexlify(data[i:i+1])
           print('hex_value', hex_value)
-          string = int(hex_value, '16')
-          print(string)
+          # string = int(hex_value, '16')
+          # print(string)
         print('########################')
         # print('data', data.hex())
     # while True:
