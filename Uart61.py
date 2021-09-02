@@ -56,7 +56,7 @@ def open_serial_connection_and_print_output():
         data = b''.join(data)
         for i in range(1, len(data), 1):
           sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
-          ending = binascii.hexlify(data[len(data)-1:len(data)]).decode('UTF-8')
+          ending = binascii.hexlify(data[len(data)-1:len(data)])
           hex_value = b'0x' + binascii.hexlify(data[i:i+1])
           # print('hex_value',  hex_value.decode('UTF-8'))
           string = int(hex_value.decode('UTF-8'), 16)
