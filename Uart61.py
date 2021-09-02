@@ -79,15 +79,19 @@ def open_serial_connection_and_print_output():
         data = b''.join(data)
         for i in range(2, len(data), 2):
           sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
-          low_byte = binascii.hexlify(data[i-1:i])
-          hex_value = b'0x' + binascii.hexlify(data[i:i+1])
-          string = int(hex_value.decode('UTF-8'), 16)
-          bit_string = "{:08b}".format(string)
-          shifted = (string << 8)
-          shifted_bit_string = "{:08b}".format(shifted)
+          low_byte = b'0x' + binascii.hexlify(data[i-1:i])
+          high_byte = b'0x' + binascii.hexlify(data[i:i+1])
+          low_string = int(low_byte.decode('UTF-8'), 16)
+          high_string = int(high_byte.decode('UTF-8'), 16)
+          low_bit_string = "{:08b}".format(low_string)
+          high_bit_string = "{:08b}".format(high_string)
+          low_shifted = (low_string >> 8)
+          high_shifted = (high_string << 8)
+          low_shifted_bit_string = "{:08b}".format(low_shifted)
+          high_shifted_bit_string = "{:08b}".format(high_shifted)
           if sensor == "51":
-            print(low_byte)
-            print('Accelerometer:', string, bit_string, shifted, shifted_bit_string)
+            print('Accelerometer:low', low_string, low_bit_string, low_shifted, low_shifted_bit_string)
+            print('Accelerometer:high', high_string, high_bit_string, high_shifted, high_shifted_bit_string)
           # elif sensor == "52":
           #   print('Gyroscope:', string)
           # elif sensor == "53":
