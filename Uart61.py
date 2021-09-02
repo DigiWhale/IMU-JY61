@@ -66,7 +66,7 @@ def open_serial_connection_and_print_output():
           #   else:
           #     print(signed/32768*180)
         print('########################')
-        time.sleep(0.1)
+        # time.sleep(0.1)
     ser.close()
     print('done')
     
