@@ -63,7 +63,7 @@ def open_serial_connection_and_print_output():
           shifted = string << 8
           shifted_bit_string = "{:08b}".format(shifted)
           if sensor == "51":
-            print('Accelerometer:', string, bit_string, shifted)
+            print('Accelerometer:', string, bit_string, shifted, shifted_bit_string)
           # elif sensor == "52":
           #   print('Gyroscope:', string)
           # elif sensor == "53":
