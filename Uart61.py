@@ -79,7 +79,7 @@ def open_serial_connection_and_print_output():
         data = b''.join(data)
         for i in range(2, len(data), 2):
           sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
-          low_byte = binascii.hexlify(data[i:i-1])
+          low_byte = binascii.hexlify(data[i-1:i+1])
           hex_value = b'0x' + binascii.hexlify(data[i:i+1])
           string = int(hex_value.decode('UTF-8'), 16)
           bit_string = "{:08b}".format(string)
