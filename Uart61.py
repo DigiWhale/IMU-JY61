@@ -88,10 +88,12 @@ def open_serial_connection_and_print_output():
           high_shifted = (high_string << 8)
           high_shifted_bit_string = "{:08b}".format(high_shifted)
           low_shifted = low_bit_string.zfill(len(high_shifted_bit_string))
+          combined = high_shifted_bit_string | low_shifted
           # low_shifted_bit_string = "{:08b}".format(low_shifted)
           if sensor == "51":
             print('Accelerometer:low', low_shifted)
             print('Accelerometer:high', high_shifted_bit_string)
+            print('combined', combined)
           # elif sensor == "52":
           #   print('Gyroscope:', string)
           # elif sensor == "53":
