@@ -3,6 +3,17 @@ import serial
 import binascii
 import time
 
+
+def binaryToDecimal(binary):
+    binary1 = binary
+    decimal, i, n = 0, 0, 0
+    while(binary != 0):
+        dec = binary % 10
+        decimal = decimal + dec * pow(2, i)
+        binary = binary//10
+        i += 1
+    print(decimal)   
+
 def open_serial_connection_and_print_output():
     """
     Opens a serial connection to the IMU
@@ -26,7 +37,8 @@ def open_serial_connection_and_print_output():
         # print(data)
         for i in range(0, len(data), 2):
           # pass
-          print(binascii.hexlify(data[i:i+2]))
+          binaryToDecimal(binascii.hexlify(data[i:i+2]))
+          # print(binascii.hexlify(data[i:i+2]))
           # # read 1st bit to identify sensor message
           # sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
           # # convert low byte and high byte to hex
