@@ -96,9 +96,9 @@ def open_serial_connection_and_print_output():
           if sensor == "51":
             print('accel')
             if sign == '1':
-              print(-signed/32768*16*9.8)
+              print(-signed/32768*16)
             else:
-              print(signed/32768*16*9.8)
+              print(signed/32768*16)
           elif sensor == "52":
             print('velocity')
             if sign == '1':
