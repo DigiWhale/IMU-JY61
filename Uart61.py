@@ -54,7 +54,7 @@ def open_serial_connection_and_print_output():
             data.append(c)
             c = ser.read()
         data = b''.join(data)
-        for i in range(1, len(data), 1):
+        for i in range(0, len(data), 1):
           hex_value = b'0x' + binascii.hexlify(data[i:i+1])
           # print('hex_value',  hex_value)
           string = int.from_bytes(hex_value, "big")
