@@ -89,7 +89,7 @@ def open_serial_connection_and_print_output():
           high_shifted_bit_string = "{:016b}".format(high_shifted)
           low_shifted = low_bit_string.zfill(len(high_shifted_bit_string))
           combined = (int(high_shifted_bit_string, 2)) | (int(low_shifted, 2))
-          signed = str(combined)[1:]
+          signed = combined/2
           # low_shifted_bit_string = "{:08b}".format(low_shifted)
           if sensor == "51":
             print('Accelerometer:low', low_shifted)
