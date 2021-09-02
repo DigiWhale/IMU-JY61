@@ -63,7 +63,6 @@ def open_serial_connection_and_print_output():
             print('Accelerometer:', string, i)
           elif sensor == "52":
             print('Gyroscope:', string)
-            print(ending)
           # elif sensor == "53":
           #   print('Magnetometer:', string)
         print('########################')
