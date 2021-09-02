@@ -94,17 +94,23 @@ def open_serial_connection_and_print_output():
           signed = int("{:016b}".format(combined)[1:], 2)
           # low_shifted_bit_string = "{:08b}".format(low_shifted)
           if sensor == "51":
+            print('accel')
             if sign == '1':
               print(-signed/32768*16)
             else:
               print(signed/32768*16)
-            # print('Accelerometer:low', low_shifted, low_byte, low_string)
-            # print('Accelerometer:high', high_shifted_bit_string, high_byte, high_string)
-            # print('combined', "{:016b}".format(combined), (signed/32768)*16*9.8)
-          # elif sensor == "52":
-          #   print('Gyroscope:', string)
-          # elif sensor == "53":
-          #   print('Magnetometer:', string)
+          elif sensor == "52":
+            print('velocity')
+            if sign == '1':
+              print(-signed/32768*16)
+            else:
+              print(signed/32768*16)
+          elif sensor == "53":
+            print('angle')
+            if sign == '1':
+              print(-signed/32768*16)
+            else:
+              print(signed/32768*16)
         print('########################')
     ser.close()
     print('done')
