@@ -60,7 +60,7 @@ def open_serial_connection_and_print_output():
           # print('hex_value',  hex_value.decode('UTF-8'))
           string = int(hex_value.decode('UTF-8'), 16)
           bit_string = "{:08b}".format(string)
-          shifted = (string << 8) & 0xFF
+          shifted = (string << 1) & 0xFF
           shifted_bit_string = "{:08b}".format(shifted)
           if sensor == "51":
             print('Accelerometer:', string, bit_string, shifted, shifted_bit_string)
