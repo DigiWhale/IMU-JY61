@@ -45,6 +45,29 @@ def open_serial_connection_and_print_output():
     ser.flushInput()
     ser.flushOutput()
     # Read the output buffer
+    # while True:
+    #     data = []
+    #     c = ser.read()
+    #     if c == b'':
+    #         break
+    #     while c != b'U' and c != b'':
+    #         data.append(c)
+    #         c = ser.read()
+    #     data = b''.join(data)
+    #     for i in range(1, len(data), 1):
+    #       sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
+    #       hex_value = b'0x' + binascii.hexlify(data[i:i+1])
+    #       string = int(hex_value.decode('UTF-8'), 16)
+    #       bit_string = "{:08b}".format(string)
+    #       shifted = (string << 8)
+    #       shifted_bit_string = "{:08b}".format(shifted)
+    #       if sensor == "51":
+    #         print('Accelerometer:', string, bit_string, shifted, shifted_bit_string)
+    #       # elif sensor == "52":
+    #       #   print('Gyroscope:', string)
+    #       # elif sensor == "53":
+    #       #   print('Magnetometer:', string)
+    #     print('########################')
     while True:
         data = []
         c = ser.read()
@@ -54,10 +77,9 @@ def open_serial_connection_and_print_output():
             data.append(c)
             c = ser.read()
         data = b''.join(data)
-        for i in range(1, len(data), 1):
+        for i in range(2, len(data), 2):
           sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
           hex_value = b'0x' + binascii.hexlify(data[i:i+1])
-          # print('hex_value',  hex_value.decode('UTF-8'))
           string = int(hex_value.decode('UTF-8'), 16)
           bit_string = "{:08b}".format(string)
           shifted = (string << 8)
@@ -69,15 +91,6 @@ def open_serial_connection_and_print_output():
           # elif sensor == "53":
           #   print('Magnetometer:', string)
         print('########################')
-        # print('data', data.hex())
-    # while True:
-    #   # ser.read_until(binascii.hexlify(b'0x55'))
-    #   reading = ser.read(1)
-    #   # converted = reading.hex()
-    # # Print the output buffer
-    #   print(int(reading, 16))
-    #   # print(int(converted, 16))
-    # # Close the connection
     ser.close()
     print('done')
     
