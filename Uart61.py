@@ -33,7 +33,7 @@
 #         do_stuff_with_sensor_data(count, status, fx, fy, fz, checksum)
 import serial
 import binascii
-import struct
+import time
 
 def open_serial_connection_and_print_output():
     """
@@ -112,6 +112,7 @@ def open_serial_connection_and_print_output():
             else:
               print(signed/32768*180)
         print('########################')
+        time.sleep(0.4)
     ser.close()
     print('done')
     
