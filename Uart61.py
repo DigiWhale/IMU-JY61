@@ -61,10 +61,10 @@ def open_serial_connection_and_print_output():
           string = int(hex_value.decode('UTF-8'), 16)
           if sensor == "51":
             print('Accelerometer:', string)
-          elif sensor == "52":
-            print('Gyroscope:', string)
-          elif sensor == "53":
-            print('Magnetometer:', string)
+          # elif sensor == "52":
+          #   print('Gyroscope:', string)
+          # elif sensor == "53":
+          #   print('Magnetometer:', string)
         print('########################')
         # print('data', data.hex())
     # while True:
