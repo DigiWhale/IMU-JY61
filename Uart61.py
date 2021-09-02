@@ -86,7 +86,7 @@ def open_serial_connection_and_print_output():
           high_string = int(high_byte.decode('UTF-8'), 16)
           low_bit_string = "{:08b}".format(low_string)
           high_bit_string = "{:08b}".format(high_string)
-          print('struct', struct.pack(">h", high_string << 8 | low_string))
+          print('struct', struct.pack("hh", high_string << 8 | low_string))
           high_shifted = (high_string << 8)
           high_shifted_bit_string = "{:016b}".format(high_shifted)
           low_shifted = low_bit_string.zfill(len(high_shifted_bit_string))
