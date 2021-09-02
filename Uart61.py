@@ -12,7 +12,7 @@ def binaryToDecimal(binary):
         decimal = decimal + dec * pow(2, i)
         binary = binary//10
         i += 1
-    print(decimal)   
+    return decimal   
 
 def open_serial_connection_and_print_output():
     """
