@@ -37,6 +37,7 @@ def open_serial_connection_and_print_output():
         # print(data)
         for i in range(0, len(data), 2):
           # pass
+          print(data[i:i+2])
           x=binascii.hexlify(data[i:i+2])
           binaryToDecimal(int(x.decode('UTF-8'), 16))
           # print(binascii.hexlify(data[i:i+2]))
