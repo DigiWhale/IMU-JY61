@@ -23,9 +23,8 @@ def open_serial_connection_and_print_output():
             data.append(c)
             c = ser.read()
         data = b''.join(data)
-        print(data)
         for i in range(0, len(data), 2):
-          pass
+          print(data[i:i+2])
           # # read 1st bit to identify sensor message
           # sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
           # # convert low byte and high byte to hex
