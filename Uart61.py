@@ -22,7 +22,7 @@ def open_serial_connection_and_print_output():
         while c != b'U' and c != b'':
             data.append(c)
             c = ser.read()
-        data = b''.join(data)
+        data = b'U\\'.join(data)
         print(data)
         for i in range(0, len(data), 2):
           pass
