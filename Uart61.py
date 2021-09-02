@@ -59,9 +59,9 @@ def open_serial_connection_and_print_output():
           hex_value = b'0x' + binascii.hexlify(data[i:i+1])
           # print('hex_value',  hex_value.decode('UTF-8'))
           string = int(hex_value.decode('UTF-8'), 16)
-          # bit_string = "{:08b}".format(string)
+          bit_string = "{:08b}".format(string)
           if sensor == "51":
-            print('Accelerometer:', string)
+            print('Accelerometer:', string, bit_string)
           # elif sensor == "52":
           #   print('Gyroscope:', string)
           # elif sensor == "53":
