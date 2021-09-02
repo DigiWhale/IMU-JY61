@@ -23,7 +23,7 @@ def open_serial_connection_and_print_output():
             c = ser.read()
         data = b''.join(data)
         for i in range(2, len(data), 2):
-          # read 2nd bit to identify sensor message
+          # read 1st bit to identify sensor message
           sensor = binascii.hexlify(data[0:1]).decode('UTF-8')
           # convert low byte and high byte to hex
           low_byte = b'0x' + binascii.hexlify(data[i-1:i])
@@ -51,6 +51,7 @@ def open_serial_connection_and_print_output():
               print(-signed/32768*16)
             else:
               print(signed/32768*16)
+              print(low_byte, high_byte, low_string, high_string, low_bit_string, high_shifted_bit_string, sign, signed, combined)
           elif sensor == "52":
             print('velocity')
             if sign == '1':
