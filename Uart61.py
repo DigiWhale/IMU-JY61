@@ -51,7 +51,7 @@ def open_serial_connection_and_print_output():
               print(-signed/32768*16)
             else:
               print(signed/32768*16)
-              print(low_byte, high_byte, low_string, high_string, low_bit_string, high_shifted_bit_string, sign, signed, combined)
+              print(low_byte, high_byte, low_string, high_string)
           elif sensor == "52":
             print('velocity')
             if sign == '1':
