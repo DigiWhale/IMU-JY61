@@ -94,8 +94,8 @@ def open_serial_connection_and_print_output():
           signed = int("{:016b}".format(combined)[1:], 2)
           # low_shifted_bit_string = "{:08b}".format(low_shifted)
           if sensor == "51":
-            if sign:
-              print('-', signed/32768*16)
+            if sign == '1':
+              print(-signed/32768*16)
             else:
               print(signed/32768*16)
             # print('Accelerometer:low', low_shifted, low_byte, low_string)
