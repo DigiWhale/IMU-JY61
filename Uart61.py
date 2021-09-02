@@ -86,9 +86,9 @@ def open_serial_connection_and_print_output():
           low_bit_string = "{:08b}".format(low_string)
           high_bit_string = "{:08b}".format(high_string)
           high_shifted = (high_string << 8)
-          low_shifted_bit_string = "{:08b}".format(low_shifted)
           high_shifted_bit_string = "{:08b}".format(high_shifted)
           low_shifted = low_string.zfill(len(low_bit_string) + len(high_shifted_bit_string))
+          low_shifted_bit_string = "{:08b}".format(low_shifted)
           if sensor == "51":
             print('Accelerometer:low', low_string, low_bit_string, low_shifted, low_shifted_bit_string)
             print('Accelerometer:high', high_string, high_bit_string, high_shifted, high_shifted_bit_string)
