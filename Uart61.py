@@ -53,18 +53,18 @@ def open_serial_connection_and_print_output():
             else:
               print(signed/32768*16)
               print(low_byte, high_byte, low_string, high_string, high_shifted_bit_string, low_shifted, combined)
-          elif sensor == "52":
-            print('velocity')
-            if sign == '1':
-              print(-signed/32768*2000)
-            else:
-              print(signed/32768*2000)
-          elif sensor == "53":
-            print('angle')
-            if sign == '1':
-              print(-signed/32768*180)
-            else:
-              print(signed/32768*180)
+          # elif sensor == "52":
+          #   print('velocity')
+          #   if sign == '1':
+          #     print(-signed/32768*2000)
+          #   else:
+          #     print(signed/32768*2000)
+          # elif sensor == "53":
+          #   print('angle')
+          #   if sign == '1':
+          #     print(-signed/32768*180)
+          #   else:
+          #     print(signed/32768*180)
         print('########################')
         time.sleep(0.1)
     ser.close()
