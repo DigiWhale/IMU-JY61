@@ -94,7 +94,7 @@ def open_serial_connection_and_print_output():
           if sensor == "51":
             print('Accelerometer:low', low_shifted, low_byte, low_string)
             print('Accelerometer:high', high_shifted_bit_string, high_byte, high_string)
-            print('combined', "{:016b}".format(combined), (signed/32768)*16)
+            print('combined', "{:016b}".format(combined), (signed/32768)*16*9.8)
           # elif sensor == "52":
           #   print('Gyroscope:', string)
           # elif sensor == "53":
