@@ -84,4 +84,5 @@ def open_serial_connection_and_print_output(export_array):
       print('Serial connection closed')
     
 if __name__ == '__main__':
-    open_serial_connection_and_print_output()
+    data = []
+    open_serial_connection_and_print_output(data)
