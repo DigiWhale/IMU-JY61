@@ -25,7 +25,7 @@ def open_serial_connection_and_print_output():
             data.append(c)
             c = ser.read()
         data = b''.join(data)
-        header = binascii.hexlify(b'U')
+        # header = binascii.hexlify(b'U')
         sensor = binascii.hexlify(data[0:1])
         reg_1 = data[1:3]
         reg_2 = data[3:5]
