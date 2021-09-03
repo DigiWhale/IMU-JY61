@@ -3,7 +3,7 @@ import serial
 import binascii
 import time
 
-def open_serial_connection_and_print_output(export_array):
+def open_serial_connection_and_print_output(angle_list, velocity_list, accel_list):
     """
     Opens a serial connection to the IMU
     """
@@ -68,7 +68,9 @@ def open_serial_connection_and_print_output(export_array):
             angle_ready = True
           
           if angle_ready and velocity_ready and accel_ready:
-            export_array[:] = angle.items() + velocity.items() + accel.items()
+            angle_list[:] = angle.items()
+            velocity_list[:] = velocity.items()
+            accel_list[:] = accel.items()
             # for key, value in angle.items():
             #   print(key, ' : ', value)
             # for key, value in velocity.items():
