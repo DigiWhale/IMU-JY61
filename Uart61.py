@@ -24,6 +24,7 @@ def open_serial_connection_and_print_output():
         while c != b'U' and c != b'':
             data.append(c)
             c = ser.read()
+        print('data_array', data)
         data = b''.join(data)
         print(data)
         header = binascii.hexlify(data[0:1])
