@@ -35,7 +35,7 @@ def open_serial_connection_and_print_output():
             c = ser.read()
         data = b'U' + b''.join(data)
         # print(data)
-        for i in range(0, len(data), 2):
+        for i in range(2, len(data), 2):
           # pass
           print(data[i:i+2])
           x=binascii.hexlify(data[i:i+2])
