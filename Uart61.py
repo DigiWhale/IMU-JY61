@@ -18,7 +18,6 @@ def open_serial_connection_and_print_output(export_array):
       angle_ready = False
       while True:
           ser.flushInput()
-          ser.flushOutput()
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
