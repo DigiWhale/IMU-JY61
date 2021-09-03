@@ -28,11 +28,14 @@ def open_serial_connection_and_print_output():
         # print(data)
         header = binascii.hexlify(data[0:1])
         sensor = binascii.hexlify(data[1:2])
+        header_raw = data[0:1]
+        sensor_raw = data[1:2]
         reg_1 = data[2:4]
         reg_2 = data[4:6]
         reg_3 = data[6:8]
         reg_4 = data[8:10]
         checksum = data[10:11]
+        checked = header_raw + sensor_raw + reg_1 + reg_2 + reg_3 + reg_4
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*16
@@ -40,7 +43,7 @@ def open_serial_connection_and_print_output():
           dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
-          print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum, dec_checksum)
+          print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum, dec_checksum, checked)
         for i in range(2, len(data), 2):
           pass
           # print(data[i:i+2])
