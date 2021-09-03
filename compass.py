@@ -1,4 +1,5 @@
 import random
+import time
 
 def get_compass_value(compass):
     """
@@ -6,3 +7,4 @@ def get_compass_value(compass):
     """
     while True:
       compass[:] = random.randint(0, 360)
+      time.sleep(0.1)
