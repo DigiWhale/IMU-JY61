@@ -38,13 +38,14 @@ def open_serial_connection_and_print_output():
         # x = hex(int('0x55', 16))
         # print(x)
         sum_of_data = 0
-        sum_of_data += ord(header_raw)
-        sum_of_data += int.from_bytes(binascii.hexlify(sensor_raw), byteorder=sys.byteorder, signed=False)
-        sum_of_data += int.from_bytes(binascii.hexlify(reg_1), byteorder=sys.byteorder, signed=False)
-        sum_of_data += int.from_bytes(binascii.hexlify(reg_2), byteorder=sys.byteorder, signed=False)
-        sum_of_data += int.from_bytes(binascii.hexlify(reg_3), byteorder=sys.byteorder, signed=False)
-        sum_of_data += int.from_bytes(binascii.hexlify(reg_4), byteorder=sys.byteorder, signed=False)
-        print(sum_of_data)
+        totals = []
+        totals.append( ord(header_raw))
+        totals.append( int.from_bytes(binascii.hexlify(sensor_raw), byteorder=sys.byteorder, signed=False))
+        totals.append( int.from_bytes(binascii.hexlify(reg_1), byteorder=sys.byteorder, signed=False))
+        totals.append( int.from_bytes(binascii.hexlify(reg_2), byteorder=sys.byteorder, signed=False))
+        totals.append( int.from_bytes(binascii.hexlify(reg_3), byteorder=sys.byteorder, signed=False))
+        totals.append( int.from_bytes(binascii.hexlify(reg_4), byteorder=sys.byteorder, signed=False))
+        print(totals)
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*16
