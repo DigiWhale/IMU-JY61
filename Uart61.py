@@ -42,7 +42,7 @@ def open_serial_connection_and_print_output():
         print("data_array", data_array)
         print("data_array_sliced", data_array[:-1])
         for ch in data_array[:-1]:
-              sum_checksum += int.from_bytes(ch, byteorder=sys.byteorder, signed=True)
+              sum_checksum += int.from_bytes(ch, byteorder=sys.byteorder, signed=False)
         print('sum_checksum', sum_checksum + 85)
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
@@ -50,7 +50,7 @@ def open_serial_connection_and_print_output():
           dec_reg_2 = int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
-          dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder ,signed=True)
+          dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
           print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, dec_checksum, sum_checksum)
         for i in range(2, len(data), 2):
           pass
