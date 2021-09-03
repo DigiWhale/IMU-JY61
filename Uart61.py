@@ -74,6 +74,7 @@ def open_serial_connection_and_print_output():
             for key, value in accel.items():
               print(key, ' : ', value)
             angle_ready, velocity_ready, accel_ready = False, False, False
+            break
 
     finally:
       ser.close()
