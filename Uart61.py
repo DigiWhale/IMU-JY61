@@ -40,10 +40,7 @@ def open_serial_connection_and_print_output():
         # print(x)
         sum_checksum = 0
         for ch in data:
-            try:
-              sum_checksum += ord(ch)
-            except:
-              pass
+              sum_checksum += int.from_bytes(ch, byteorder=sys.byteorder)
         print('sum_checksum', sum_checksum)
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
