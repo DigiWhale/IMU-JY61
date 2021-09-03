@@ -38,7 +38,7 @@ def open_serial_connection_and_print_output():
         x = hex(int('0x55', 16))
         print(x)
         sum_of_data = 0
-        sum_of_data += ord(header)
+        sum_of_data += ord(header_raw)
         print(sum_of_data)
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
