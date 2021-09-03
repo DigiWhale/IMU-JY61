@@ -39,7 +39,7 @@ def open_serial_connection_and_print_output():
           dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
-          accel = {'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
+          accel = {'sensor': 'accel', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
           print(accel)
           # print('Acceleration', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
         elif sensor == b'52':
@@ -48,14 +48,18 @@ def open_serial_connection_and_print_output():
           dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*2000
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
-          print('Velocity', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
+          velocity = {'sensor': 'velocity', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
+          print(velocity)
+          # print('Velocity', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
         elif sensor == b'53':
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*180
           dec_reg_2 = int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*180
           dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*180
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
-          print('Angle', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
+          angle = {'sensor': 'angle', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
+          print(angle)
+          # print('Angle', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
     ser.close()
     print('done')
     
