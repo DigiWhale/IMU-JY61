@@ -35,7 +35,7 @@ def open_serial_connection_and_print_output():
         reg_3 = data[6:8]
         reg_4 = data[8:10]
         checksum = data[10:11]
-        checked = header_raw + sensor_raw + reg_1 + reg_2 + reg_3 + reg_4
+        checked = header_raw + '\\' + sensor_raw + reg_1 + reg_2 + reg_3 + reg_4
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*16
