@@ -39,7 +39,7 @@ def open_serial_connection_and_print_output():
         # x = hex(int('0x55', 16))
         # print(x)
         sum_checksum = 0
-        for ch in data_array[:-1]:
+        for ch in data_array[:-2]:
               sum_checksum += int.from_bytes(ch, byteorder=sys.byteorder)
         print('sum_checksum', sum_checksum + 85)
         if sensor == b'51':
