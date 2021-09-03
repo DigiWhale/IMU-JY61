@@ -40,7 +40,8 @@ def open_serial_connection_and_print_output():
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
           accel = {'sensor': 'accel', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
-          print(accel)
+          for key, value in accel.items():
+            print(key, ' : ', value)
           # print('Acceleration', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
         elif sensor == b'52':
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*2000
@@ -49,7 +50,8 @@ def open_serial_connection_and_print_output():
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
           velocity = {'sensor': 'velocity', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
-          print(velocity)
+          for key, value in velocity.items():
+            print(key, ' : ', value)
           # print('Velocity', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
         elif sensor == b'53':
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*180
@@ -58,7 +60,8 @@ def open_serial_connection_and_print_output():
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
           angle = {'sensor': 'angle', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
-          print(angle)
+          for key, value in angle.items():
+            print(key, ' : ', value)
           # print('Angle', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
     ser.close()
     print('done')
