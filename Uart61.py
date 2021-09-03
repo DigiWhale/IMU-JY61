@@ -15,54 +15,57 @@ def open_serial_connection_and_print_output():
     ser.flushInput()
     ser.flushOutput()
 
-    while True:
-        
+    while ser.available():
+        # initialize data buffer to store bytes
         data = []
+        # start reading bytes
         c = ser.read()
+        # if no bytes are available, break out of loop
         if c == b'':
             break
+        # while the incoming byte is not the delimiter, add it to the data buffer
         while c != b'U' and c != b'':
             data.append(c)
             c = ser.read()
-        data = b''.join(data)
-        # header = binascii.hexlify(b'U')
-        sensor = binascii.hexlify(data[0:1])
-        reg_1 = data[1:3]
-        reg_2 = data[3:5]
-        reg_3 = data[5:7]
-        reg_4 = data[7:9]
-        checksum = data[9:10]
-
+        # join the data buffer into a string
+        data_string = b''.join(data)
+        # match data bytes to chipset format for Wit Motion WT61 IMU
+        sensor = binascii.hexlify(data_string[0:1])
+        reg_1 = data_string[1:3]
+        reg_2 = data_string[3:5]
+        reg_3 = data_string[5:7]
+        reg_4 = data_string[7:9]
+        checksum = data_string[9:10]
+        # if accel data is available, print it
         if sensor == b'51':
-          dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*16
-          dec_reg_2 = int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*16
-          dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*16
-          dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
-          dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
+          dec_reg_1 = round(int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*16, 2)
+          dec_reg_2 = round(int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*16, 2)
+          dec_reg_3 = round(int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*16, 2)
+          dec_reg_4 = round(int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53, 2)
+          dec_checksum = round(int.from_bytes(checksum, byteorder=sys.byteorder, signed=False), 2)
           accel = {'sensor': 'accel', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
           for key, value in accel.items():
             print(key, ' : ', value)
-          # print('Acceleration', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
+        # if velocity data is available, print it
         elif sensor == b'52':
-          dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*2000
-          dec_reg_2 = int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*2000
-          dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*2000
-          dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
-          dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
+          dec_reg_1 = round(int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*2000, 2)
+          dec_reg_2 = round(int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*2000, 2)
+          dec_reg_3 = round(int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*2000, 2)
+          dec_reg_4 = round(int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53, 2)
+          dec_checksum = round(int.from_bytes(checksum, byteorder=sys.byteorder, signed=False), 2)
           velocity = {'sensor': 'velocity', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
           for key, value in velocity.items():
             print(key, ' : ', value)
-          # print('Velocity', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
+        # if angle data is available, print it
         elif sensor == b'53':
-          dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*180
-          dec_reg_2 = int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*180
-          dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*180
-          dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
-          dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
+          dec_reg_1 = round(int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*180, 2)
+          dec_reg_2 = round(int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*180, 2)
+          dec_reg_3 = round(int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*180, 2)
+          dec_reg_4 = round(int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53, 2)
+          dec_checksum = round(int.from_bytes(checksum, byteorder=sys.byteorder, signed=False), 2)
           angle = {'sensor': 'angle', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
           for key, value in angle.items():
             print(key, ' : ', value)
-          # print('Angle', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
     ser.close()
     print('done')
     
