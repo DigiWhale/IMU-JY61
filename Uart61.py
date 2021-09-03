@@ -39,7 +39,7 @@ def open_serial_connection_and_print_output():
         # print(x)
         sum_of_data = 0
         sum_of_data += ord(header_raw)
-        sum_of_data += ord(sensor_raw)
+        # sum_of_data += ord(sensor_raw)
         sum_of_data += ord(reg_1)
         sum_of_data += ord(reg_2)
         sum_of_data += ord(reg_3)
