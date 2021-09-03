@@ -38,10 +38,10 @@ def open_serial_connection_and_print_output():
         # print(data)
         header = binascii.hexlify(data[0:1]).decode('UTF-8')
         sensor = binascii.hexlify(data[1:2]).decode('UTF-8')
-        reg_1 = binascii.hexlify(data[2:4])
-        reg_2 = binascii.hexlify(data[4:6])
-        reg_3 = binascii.hexlify(data[6:8])
-        reg_4 = binascii.hexlify(data[8:10])
+        reg_1 = data[2:4]
+        reg_2 = data[4:6]
+        reg_3 = data[6:8]
+        reg_4 = data[8:10]
         checksum = binascii.hexlify(data[10:11]).decode('UTF-8')
         print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
         dec_reg_1 = int.from_bytes(reg_1, byteorder='little', signed=True)
