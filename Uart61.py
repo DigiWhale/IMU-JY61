@@ -43,11 +43,11 @@ def open_serial_connection_and_print_output():
         reg_3 = binascii.hexlify(data[6:8]).decode('UTF-8')
         reg_4 = binascii.hexlify(data[8:10]).decode('UTF-8')
         checksum = binascii.hexlify(data[10:11]).decode('UTF-8')
+        print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
         dec_reg_1 = ord(reg_1)
         dec_reg_2 = ord(reg_2)
         dec_reg_3 = ord(reg_3)
         dec_reg_4 = ord(reg_4)
-        print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
         print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum)
         for i in range(2, len(data), 2):
           pass
