@@ -20,6 +20,7 @@ def open_serial_connection_and_print_output(export_array):
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
+          ser.flushOutput()
           c = ser.read()
           # if no bytes are available, break out of loop
           if c == b'':
