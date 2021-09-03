@@ -40,10 +40,10 @@ def open_serial_connection_and_print_output():
         sum_of_data = 0
         sum_of_data += ord(header_raw)
         sum_of_data += int.from_bytes(binascii.hexlify(sensor_raw), byteorder=sys.byteorder, signed=False)
-        sum_of_data += ord(reg_1)
-        sum_of_data += ord(reg_2)
-        sum_of_data += ord(reg_3)
-        sum_of_data += ord(reg_4)
+        sum_of_data += int.from_bytes(binascii.hexlify(reg_1), byteorder=sys.byteorder, signed=False)
+        sum_of_data += int.from_bytes(binascii.hexlify(reg_2), byteorder=sys.byteorder, signed=False)
+        sum_of_data += int.from_bytes(binascii.hexlify(reg_3), byteorder=sys.byteorder, signed=False)
+        sum_of_data += int.from_bytes(binascii.hexlify(reg_4), byteorder=sys.byteorder, signed=False)
         print(sum_of_data)
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
