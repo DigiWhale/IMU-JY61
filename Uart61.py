@@ -40,7 +40,7 @@ def open_serial_connection_and_print_output():
         sum_of_data = 0
         totals = []
         totals.append( ord(header_raw))
-        totals.append( ord(sensor_raw))
+        totals.append( ord(sensor))
         totals.append( int.from_bytes(binascii.hexlify(reg_1), byteorder=sys.byteorder, signed=False))
         totals.append( int.from_bytes(binascii.hexlify(reg_2), byteorder=sys.byteorder, signed=False))
         totals.append( int.from_bytes(binascii.hexlify(reg_3), byteorder=sys.byteorder, signed=False))
