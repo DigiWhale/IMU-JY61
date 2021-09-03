@@ -17,7 +17,6 @@ def open_serial_connection_and_print_output(export_array):
       velocity_ready = False
       angle_ready = False
       while True:
-          ser.flushInput()
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
