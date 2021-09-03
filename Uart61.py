@@ -16,7 +16,7 @@ def open_serial_connection_and_print_output():
       accel_ready = False
       velocity_ready = False
       angle_ready = False
-      for i in range(0, 3):
+      while True:
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
