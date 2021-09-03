@@ -76,12 +76,9 @@ def open_serial_connection_and_print_output():
             # for key, value in angle.items():
             #   print(key, ' : ', value)
           if angle_ready and velocity_ready and accel_ready:
-            print(angle)
-            print(velocity)
-            print(accel)
-            angle_ready = False
-            velocity_ready = False
-            accel_ready = False
+            print(angle, velocity, accel)
+            angle_ready, velocity_ready, accel_ready = False
+
     finally:
       ser.close()
       print('Serial connection closed')
