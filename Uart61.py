@@ -3,7 +3,7 @@ import serial
 import binascii
 import time
 
-def open_serial_connection_and_print_output(export_arrayyy):
+def open_serial_connection_and_print_output(export_array):
     """
     Opens a serial connection to the IMU
     """
