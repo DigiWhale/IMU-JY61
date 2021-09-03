@@ -38,7 +38,6 @@ def open_serial_connection_and_print_output():
         # print(data)
         header = binascii.hexlify(data[0:1]).decode('UTF-8')
         sensor = binascii.hexlify(data[1:2]).decode('UTF-8')
-        print(sensor, type(sensor))
         if sensor == '51':
           reg_1 = data[2:4]
           reg_2 = data[4:6]
