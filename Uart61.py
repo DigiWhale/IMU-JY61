@@ -39,7 +39,7 @@ def open_serial_connection_and_print_output(export_array):
           # checksum = data_string[9:10]
                     
           # if accel data is available, print it
-          if sensor == b'51':
+          if sensor == b'51' and accel_ready == False:
             dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*16, 2)
             dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*16, 2)
             dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*16, 2)
@@ -48,7 +48,7 @@ def open_serial_connection_and_print_output(export_array):
             accel = {'ax': dec_reg_1, 'ay': dec_reg_2, 'az': dec_reg_3}
             accel_ready = True
 
-          elif sensor == b'52':
+          elif sensor == b'52' and velocity_ready == False:
             dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*2000, 2)
             dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*2000, 2)
             dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*2000, 2)
@@ -57,7 +57,7 @@ def open_serial_connection_and_print_output(export_array):
             velocity = {'vx': dec_reg_1, 'vy': dec_reg_2, 'vz': dec_reg_3}
             velocity_ready = True
 
-          elif sensor == b'53':
+          elif sensor == b'53' and angle_ready == False:
             dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*180, 2)
             dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*180, 2)
             dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*180, 2)
@@ -70,7 +70,6 @@ def open_serial_connection_and_print_output(export_array):
             export_array.insert(0, accel)
             export_array.insert(1, velocity)
             export_array.insert(2, angle)
-            export_array = export_array[:-3]
             # for key, value in angle.items():
             #   print(key, ' : ', value)
             # for key, value in velocity.items():
