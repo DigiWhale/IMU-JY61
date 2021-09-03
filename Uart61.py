@@ -69,9 +69,7 @@ def open_serial_connection_and_print_output(export_array):
           
           if angle_ready and velocity_ready and accel_ready:
             export_array.append(accel)
-            export_array.pop()
             export_array.append(velocity)
-            export_array.pop()
             export_array.append(angle)
             export_array.pop()
             # for key, value in angle.items():
