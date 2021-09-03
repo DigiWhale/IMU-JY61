@@ -36,6 +36,7 @@ while True:
     except KeyboardInterrupt:
         event.set()
         break
+    t.stop()
     t.join()
 t.join()
 b.join()
