@@ -37,9 +37,10 @@ def open_serial_connection_and_print_output():
         checksum = data[10:11]
         # x = hex(int('0x55', 16))
         # print(x)
-        sum_of_data = 0
-        sum_of_data += data[0]
-        print('sum', sum_of_data)
+        sum_checksum = 0
+        for ch in data:
+            sum_checksum += ord(ch)
+          print('sum_checksum', sum_checksum)
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*16
