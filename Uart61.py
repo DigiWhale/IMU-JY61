@@ -41,7 +41,7 @@ def open_serial_connection_and_print_output():
         sum_checksum = 0
         for ch in data:
             try:
-              sum_checksum += int.from_bytes(ch, byteorder=sys.byteorder, signed=True)
+              sum_checksum += ord(ch)
             except:
               pass
         print('sum_checksum', sum_checksum)
