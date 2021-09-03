@@ -5,16 +5,6 @@ import sys
 from ast import literal_eval
 
 
-def binaryToDecimal(binary):
-    binary1 = binary
-    decimal, i, n = 0, 0, 0
-    while(binary != 0):
-        dec = binary % 10
-        decimal = decimal + dec * pow(2, i)
-        binary = binary//10
-        i += 1
-    return decimal   
-
 def open_serial_connection_and_print_output():
     """
     Opens a serial connection to the IMU
@@ -43,13 +33,14 @@ def open_serial_connection_and_print_output():
         reg_3 = data[6:8]
         reg_4 = data[8:10]
         checksum = binascii.hexlify(data[10:11]).decode('UTF-8')
+        calcsum = binascii.hexlify(data[0:1]) + binascii.hexlify(data[1:2]) + binascii.hexlify(data[2:4]) + binascii.hexlify(data[4:6]) + binascii.hexlify(data[6:8]) + binascii.hexlify(data[8:10])
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
           dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_2 = int.from_bytes(reg_2, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
-          print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum)
+          print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum, calcsum)
         for i in range(2, len(data), 2):
           pass
           # print(data[i:i+2])
