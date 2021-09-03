@@ -40,7 +40,7 @@ def open_serial_connection_and_print_output():
         sum_of_data = 0
         totals = []
         totals.append( ord(header_raw))
-        totals.append( ord(sensor))
+        totals.append( int.from_bytes(binascii.hexlify(sensor_raw), byteorder=sys.byteorder, signed=False))
         totals.append( int.from_bytes(binascii.hexlify(reg_1), byteorder=sys.byteorder, signed=False))
         totals.append( int.from_bytes(binascii.hexlify(reg_2), byteorder=sys.byteorder, signed=False))
         totals.append( int.from_bytes(binascii.hexlify(reg_3), byteorder=sys.byteorder, signed=False))
@@ -53,7 +53,7 @@ def open_serial_connection_and_print_output():
           dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder, signed=True)/32768*16
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           # dec_checksum = int.from_bytes(checked, byteorder=sys.byteorder, signed=False)
-          print(header, header_raw, sensor, sensor_raw, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum, sum_of_data)
+          print(header, header_raw, sensor, sensor_raw, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, int(checksum, 16), sum_of_data)
         for i in range(2, len(data), 2):
           pass
           # print(data[i:i+2])
