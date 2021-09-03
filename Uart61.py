@@ -17,8 +17,6 @@ def open_serial_connection_and_print_output(export_array):
       velocity_ready = False
       angle_ready = False
       while True:
-          ser.flushInput()
-          ser.flushOutput()
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
@@ -72,7 +70,8 @@ def open_serial_connection_and_print_output(export_array):
             export_array.insert(0, accel)
             export_array.insert(1, velocity)
             export_array.insert(2, angle)
-            export_array.pop(3)
+            ser.flushInput()
+            ser.flushOutput()
             # for key, value in angle.items():
             #   print(key, ' : ', value)
             # for key, value in velocity.items():
