@@ -41,42 +41,39 @@ def open_serial_connection_and_print_output():
                     
           # if accel data is available, print it
           if sensor == b'51':
-            # accel_ready = False
             dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*16, 2)
             dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*16, 2)
             dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*16, 2)
-            dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
-            dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
-            accel = {'sensor': 'accel', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
+            # dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
+            # dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
+            accel = {'ax': dec_reg_1, 'ay': dec_reg_2, 'az': dec_reg_3}
             accel_ready = True
-            # for key, value in accel.items():
-            #   print(key, ' : ', value)
-          # if velocity data is available, print it
+
           elif sensor == b'52':
-            # velocity_ready = False
             dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*2000, 2)
             dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*2000, 2)
             dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*2000, 2)
-            dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
-            dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
-            velocity = {'sensor': 'velocity', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
+            # dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
+            # dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
+            velocity = {'vx': dec_reg_1, 'vy': dec_reg_2, 'vz': dec_reg_3}
             velocity_ready = True
-            # for key, value in velocity.items():
-            #   print(key, ' : ', value)
-          # if angle data is available, print it
+
           elif sensor == b'53':
-            # angle_ready = False
             dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*180, 2)
             dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*180, 2)
             dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*180, 2)
-            dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
-            dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
-            angle = {'sensor': 'angle', 'x': dec_reg_1, 'y': dec_reg_2, 'z': dec_reg_3}
+            # dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
+            # dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
+            angle = {'wx': dec_reg_1, 'wy': dec_reg_2, 'wz': dec_reg_3}
             angle_ready = True
-            # for key, value in angle.items():
-            #   print(key, ' : ', value)
+          
           if angle_ready and velocity_ready and accel_ready:
-            print(angle, velocity, accel)
+            for key, value in angle.items():
+              print(key, ' : ', value)
+            for key, value in velocity.items():
+              print(key, ' : ', value)
+            for key, value in accel.items():
+              print(key, ' : ', value)
             angle_ready, velocity_ready, accel_ready = False, False, False
 
     finally:
