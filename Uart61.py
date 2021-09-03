@@ -35,8 +35,8 @@ def open_serial_connection_and_print_output():
             c = ser.read()
         data = b'U' + b''.join(data)
         # print(data)
-        header = binascii.hexlify(data[0:1]).hex()
-        sensor = binascii.hexlify(data[1:2]).hex()
+        header = binascii.hexlify(data[0:1]).decode('UTF-8')
+        sensor = binascii.hexlify(data[1:2]).decode('UTF-8')
         print(header, sensor)
         for i in range(2, len(data), 2):
           # pass
