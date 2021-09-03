@@ -2,7 +2,13 @@
 import serial
 import binascii
 import sys
+import signal
 
+def signal_handler(sig, frame, ser_instance):
+    print('Closing serial port.')
+    ser_instance.close()
+    sys.exit(0)
+    
 
 def open_serial_connection_and_print_output():
     """
@@ -77,8 +83,8 @@ def open_serial_connection_and_print_output():
             angle_ready, velocity_ready, accel_ready = False, False, False
 
     finally:
-      ser.close()
       print('Serial connection closed')
     
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     open_serial_connection_and_print_output()
