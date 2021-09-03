@@ -77,7 +77,7 @@ def open_serial_connection_and_print_output():
             #   print(key, ' : ', value)
           if angle_ready and velocity_ready and accel_ready:
             print(angle, velocity, accel)
-            angle_ready, velocity_ready, accel_ready = False
+            angle_ready, velocity_ready, accel_ready = False, False, False
 
     finally:
       ser.close()
