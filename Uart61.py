@@ -35,10 +35,15 @@ def open_serial_connection_and_print_output():
         reg_3 = data[6:8]
         reg_4 = data[8:10]
         checksum = data[10:11]
-        x = hex(int('0x55', 16))
-        print(x)
+        # x = hex(int('0x55', 16))
+        # print(x)
         sum_of_data = 0
         sum_of_data += ord(header_raw)
+        sum_of_data += ord(sensor_raw)
+        sum_of_data += ord(reg_1)
+        sum_of_data += ord(reg_2)
+        sum_of_data += ord(reg_3)
+        sum_of_data += ord(reg_4)
         print(sum_of_data)
         if sensor == b'51':
           # print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
