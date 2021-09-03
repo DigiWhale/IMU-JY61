@@ -1,7 +1,7 @@
 
 import serial
 import binascii
-import sys
+import time
 
 def open_serial_connection_and_print_output():
     """
@@ -35,8 +35,8 @@ def open_serial_connection_and_print_output():
           reg_1 = data_string[1:3]
           reg_2 = data_string[3:5]
           reg_3 = data_string[5:7]
-          reg_4 = data_string[7:9]
-          checksum = data_string[9:10]
+          # reg_4 = data_string[7:9]
+          # checksum = data_string[9:10]
                     
           # if accel data is available, print it
           if sensor == b'51':
@@ -74,6 +74,7 @@ def open_serial_connection_and_print_output():
             for key, value in accel.items():
               print(key, ' : ', value)
             angle_ready, velocity_ready, accel_ready = False, False, False
+            time.sleep(0.1)
 
     finally:
       ser.close()
