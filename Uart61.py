@@ -35,6 +35,8 @@ def open_serial_connection_and_print_output():
             c = ser.read()
         data = b'U' + b''.join(data)
         # print(data)
+        header = data[0:2]
+        print(header)
         for i in range(2, len(data), 2):
           # pass
           print(data[i:i+2])
