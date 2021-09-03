@@ -19,7 +19,7 @@ def modify_variable_2(var):
             var[i] += 2
         if event.is_set():
             break
-        sleep(.01)
+        sleep(1)
     print('Stop printing')
 
 your_var = [0, 1, 2]
@@ -34,7 +34,6 @@ b.start()
 while True:
     try:
         print(my_var, your_var, velocity, angle, accel)
-        sleep(1)
     except KeyboardInterrupt:
         event.set()
         break
