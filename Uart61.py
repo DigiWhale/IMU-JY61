@@ -1,7 +1,7 @@
 
 import serial
 import binascii
-import time
+import sys
 from ast import literal_eval
 
 
@@ -43,10 +43,10 @@ def open_serial_connection_and_print_output():
         reg_3 = binascii.hexlify(data[6:8])
         reg_4 = binascii.hexlify(data[8:10])
         checksum = binascii.hexlify(data[10:11])
-        dec_reg_1 = int.from_bytes(reg_1, 16)
-        dec_reg_2 = int.from_bytes(reg_2, 16)
-        dec_reg_3 = int.from_bytes(reg_3, 16)
-        dec_reg_4 = int.from_bytes(reg_4, 16)
+        dec_reg_1 = int.from_bytes(reg_1, byteorder=sys.byteorder)
+        dec_reg_2 = int.from_bytes(reg_2, byteorder=sys.byteorder)
+        dec_reg_3 = int.from_bytes(reg_3, byteorder=sys.byteorder)
+        dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder)
         print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
         print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum)
         for i in range(2, len(data), 2):
