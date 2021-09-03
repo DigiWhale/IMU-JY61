@@ -25,17 +25,17 @@ def open_serial_connection_and_print_output():
             data.append(c)
             c = ser.read()
         print('data_array', data)
-        data = b'U'.join(data)
+        data = b''.join(data)
         print(data)
-        header = binascii.hexlify(data[0:1])
-        sensor = binascii.hexlify(data[1:2])
-        header_raw = data[0:1]
-        sensor_raw = data[1:2]
-        reg_1 = data[2:4]
-        reg_2 = data[4:6]
-        reg_3 = data[6:8]
-        reg_4 = data[8:10]
-        checksum = data[10:11]
+        # header = binascii.hexlify(data[0:1])
+        sensor = binascii.hexlify(data[0:1])
+        # header_raw = data[0:1]
+        sensor_raw = data[0:1]
+        reg_1 = data[1:3]
+        reg_2 = data[3:5]
+        reg_3 = data[5:7]
+        reg_4 = data[7:9]
+        checksum = data[9:10]
         # x = hex(int('0x55', 16))
         # print(x)
         sum_checksum = 0
