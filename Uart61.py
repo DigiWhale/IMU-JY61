@@ -27,7 +27,7 @@ def open_serial_connection_and_print_output():
         print('data_array', data)
         data = b'U'.join(data)
         print(data)
-        header = hex(int('0x55', 16))
+        header = binascii.hexlify(data[0:1])
         sensor = binascii.hexlify(data[1:2])
         header_raw = data[0:1]
         sensor_raw = data[1:2]
