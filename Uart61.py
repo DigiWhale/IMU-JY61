@@ -2,6 +2,7 @@
 import serial
 import binascii
 import time
+from ast import literal_eval
 
 
 def binaryToDecimal(binary):
@@ -35,13 +36,13 @@ def open_serial_connection_and_print_output():
             c = ser.read()
         data = b'U' + b''.join(data)
         # print(data)
-        header = str(binascii.hexlify(data[0:1]).decode('ascii'))
-        sensor = str(binascii.hexlify(data[1:2]).decode('ascii'))
-        reg_1 = str(binascii.hexlify(data[2:4]).decode('ascii'))
-        reg_2 = str(binascii.hexlify(data[4:6]).decode('ascii'))
-        reg_3 = str(binascii.hexlify(data[6:8]).decode('ascii'))
-        reg_4 = str(binascii.hexlify(data[8:10]).decode('ascii'))
-        checksum = str(binascii.hexlify(data[10:11]).decode('ascii'))
+        header = literal_eval(binascii.hexlify(data[0:1]).decode('UTF-8'))
+        sensor = literal_eval(binascii.hexlify(data[1:2]).decode('UTF-8'))
+        reg_1 = literal_eval(binascii.hexlify(data[2:4]).decode('UTF-8'))
+        reg_2 = literal_eval(binascii.hexlify(data[4:6]).decode('UTF-8'))
+        reg_3 = literal_eval(binascii.hexlify(data[6:8]).decode('UTF-8'))
+        reg_4 = literal_eval(binascii.hexlify(data[8:10]).decode('UTF-8'))
+        checksum = literal_eval(binascii.hexlify(data[10:11]).decode('UTF-8'))
         dec_reg_1 = binaryToDecimal(int(reg_1, 16))
         dec_reg_2 = binaryToDecimal(int(reg_2, 16))
         dec_reg_3 = binaryToDecimal(int(reg_3, 16))
