@@ -17,7 +17,7 @@ def open_serial_connection_and_print_output():
 
     while True:
         accel = []
-        data = [b'U']
+        data = ['0x55']
         c = ser.read()
         if c == b'':
             break
