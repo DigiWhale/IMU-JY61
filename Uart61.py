@@ -42,12 +42,12 @@ def open_serial_connection_and_print_output():
         reg_3 = binascii.hexlify(data[6:8]).decode('ascii')
         reg_4 = binascii.hexlify(data[8:10]).decode('ascii')
         checksum = binascii.hexlify(data[10:11]).decode('ascii')
-        # dec_reg_1 = binaryToDecimal(int(reg_1, 16))
-        # dec_reg_2 = binaryToDecimal(int(reg_2, 16))
-        # dec_reg_3 = binaryToDecimal(int(reg_3, 16))
-        # dec_reg_4 = binaryToDecimal(int(reg_4, 16))
+        dec_reg_1 = binaryToDecimal(int(reg_1, 16))
+        dec_reg_2 = binaryToDecimal(int(reg_2, 16))
+        dec_reg_3 = binaryToDecimal(int(reg_3, 16))
+        dec_reg_4 = binaryToDecimal(int(reg_4, 16))
         print(header, sensor, reg_1, reg_2, reg_3, reg_4, checksum)
-        # print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum)
+        print(header, sensor, dec_reg_1, dec_reg_2, dec_reg_3, dec_reg_4, checksum)
         for i in range(2, len(data), 2):
           pass
           # print(data[i:i+2])
