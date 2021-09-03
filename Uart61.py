@@ -15,7 +15,7 @@ def open_serial_connection_and_print_output():
     ser.flushInput()
     ser.flushOutput()
 
-    while ser.available():
+    while ser.in_waiting:
         # initialize data buffer to store bytes
         data = []
         # start reading bytes
