@@ -32,7 +32,7 @@ b.start()
 while True:
     try:
         print(my_var, your_var, data)
-        sleep(.01)
+        sleep(1)
     except KeyboardInterrupt:
         event.set()
         break
