@@ -1,7 +1,7 @@
 from threading import Thread, Event
 from time import sleep
 from Uart61 import open_serial_connection_and_print_output
-
+from compass import compass
 event = Event()
 
 def modify_variable(var):
@@ -27,13 +27,14 @@ my_var = [1, 2, 3]
 velocity = []
 accel = []
 angle = []
+compass = []
 t = Thread(target=open_serial_connection_and_print_output, args=(velocity, angle, accel, ))
-b = Thread(target=modify_variable_2, args=(your_var, ))
+b = Thread(target=compass, args=(compass, ))
 t.start()
 b.start()
 while True:
     try:
-        print(my_var, your_var, velocity, angle, accel)
+        print(compass, velocity, angle, accel)
     except KeyboardInterrupt:
         event.set()
         break
