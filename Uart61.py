@@ -54,7 +54,6 @@ def open_serial_connection_and_print_output():
           dec_reg_4 = int.from_bytes(reg_4, byteorder=sys.byteorder, signed=True)/340+36.53
           dec_checksum = int.from_bytes(checksum, byteorder=sys.byteorder, signed=False)
           print('Angle', format(dec_reg_1, '.2f'), format(dec_reg_2, '.2f'), format(dec_reg_3, '.2f'), format(dec_reg_4, '.2f'))
-        print('########################')
     ser.close()
     print('done')
     
