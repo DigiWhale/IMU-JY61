@@ -35,9 +35,7 @@ def open_serial_connection_and_print_output():
           reg_3 = data_string[5:7]
           reg_4 = data_string[7:9]
           checksum = data_string[9:10]
-          
-          print(sys.byteorder)
-          
+                    
           # if accel data is available, print it
           if sensor == b'51':
             dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*16, 2)
