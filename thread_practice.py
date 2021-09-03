@@ -24,7 +24,7 @@ def modify_variable_2(var):
 
 your_var = [0, 1, 2]
 my_var = [1, 2, 3]
-data = {}
+data = []
 t = Thread(target=open_serial_connection_and_print_output, args=(data, ))
 b = Thread(target=modify_variable_2, args=(your_var, ))
 t.start()
