@@ -32,6 +32,7 @@ b.start()
 while True:
     try:
         print(my_var, your_var, data)
+        data = []
         sleep(.01)
     except KeyboardInterrupt:
         event.set()
