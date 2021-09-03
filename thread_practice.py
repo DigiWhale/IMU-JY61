@@ -24,20 +24,18 @@ def modify_variable_2(var):
 
 your_var = [0, 1, 2]
 my_var = [1, 2, 3]
-t = Thread(target=open_serial_connection_and_print_output)
+data = []
+t = Thread(target=open_serial_connection_and_print_output, args=(data, ))
 b = Thread(target=modify_variable_2, args=(your_var, ))
+t.start()
 b.start()
 while True:
-    t.start()
-
     try:
-        # print(my_var, your_var)
+        print(my_var, your_var, data)
         sleep(.01)
     except KeyboardInterrupt:
         event.set()
         break
-    t.stop()
-    t.join()
 t.join()
 b.join()
 print('done')
