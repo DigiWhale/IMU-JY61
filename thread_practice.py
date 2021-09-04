@@ -32,6 +32,8 @@ while True:
           print('difference', round((angle[2][1]+180) - compass[0][1]-offset) - round(compass[0][1]))
           print('#################################')
           # sleep(0.01)
+          if event.is_set():
+            break
         except:
           print('passed')
     except KeyboardInterrupt:
