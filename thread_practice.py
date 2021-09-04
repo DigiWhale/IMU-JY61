@@ -15,7 +15,7 @@ b.start()
 while True:
     try:
         # print(compass, velocity, angle, accel)
-        heading = compass[0][1]
+        heading = compass[0][1] + angle[2][1]
         print(heading)
     except KeyboardInterrupt:
         event.set()
