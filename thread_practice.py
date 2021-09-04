@@ -16,7 +16,7 @@ t.start()
 b.start()
 init_compass = False
 print('Setting IMU heading offset...')
-sleep(2)
+sleep(5)
 while True:
     try:
         # print(compass, velocity, angle, accel)
