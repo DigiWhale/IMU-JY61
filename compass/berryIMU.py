@@ -23,7 +23,6 @@ import IMU
 import datetime
 import os
 import sys
-from multiprocessing import Process,Pipe
 
 
 RAD_TO_DEG = 57.29578
@@ -37,19 +36,13 @@ AA =  0.40      # Complementary filter constant
 # Calibrating the compass isnt mandatory, however a calibrated
 # compass will result in a more accurate heading value.
 
-# magXmin =  0
-# magYmin =  0
-# magZmin =  0
-# magXmax =  0
-# magYmax =  0
-# magZmax =  0
+magXmin =  0
+magYmin =  0
+magZmin =  0
+magXmax =  0
+magYmax =  0
+magZmax =  0
 
-magXmin = -542
-magYmin = -141
-magZmin = -1869
-magXmax = 531
-magYmax = 1124
-magZmax = -1363
 
 '''
 Here is an example:
@@ -81,9 +74,8 @@ YP_11 = 0.0
 KFangleX = 0.0
 KFangleY = 0.0
 
-# def headingfunc(child_conn):
-    # child_conn.send("msg")
-    # child_conn.close()
+
+
 
 def kalmanFilterY ( accAngle, gyroRate, DT):
     y=0.0
@@ -163,17 +155,19 @@ if(IMU.BerryIMUversion == 99):
     sys.exit()
 IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
+gyroXangle = 0.0
+gyroYangle = 0.0
+gyroZangle = 0.0
+CFangleX = 0.0
+CFangleY = 0.0
+kalmanX = 0.0
+kalmanY = 0.0
 
-def headingfunc(child_conn):
-    gyroXangle = 0.0
-    gyroYangle = 0.0
-    gyroZangle = 0.0
-    CFangleX = 0.0
-    CFangleY = 0.0
-    kalmanX = 0.0
-    kalmanY = 0.0
+a = datetime.datetime.now()
 
-    a = datetime.datetime.now()
+while True:
+
+
     #Read the accelerometer,gyroscope and magnetometer values
     ACCx = IMU.readACCx()
     ACCy = IMU.readACCy()
@@ -287,25 +281,22 @@ def headingfunc(child_conn):
 
 
 
-    if 0:                       #Change to '0' to stop showing the angles from the accelerometer
+    if 1:                       #Change to '0' to stop showing the angles from the accelerometer
         outputString += "#  ACCX Angle %5.2f ACCY Angle %5.2f  #  " % (AccXangle, AccYangle)
 
-    if 0:                       #Change to '0' to stop  showing the angles from the gyro
+    if 1:                       #Change to '0' to stop  showing the angles from the gyro
         outputString +="\t# GRYX Angle %5.2f  GYRY Angle %5.2f  GYRZ Angle %5.2f # " % (gyroXangle,gyroYangle,gyroZangle)
 
-    if 0:                       #Change to '0' to stop  showing the angles from the complementary filter
+    if 1:                       #Change to '0' to stop  showing the angles from the complementary filter
         outputString +="\t#  CFangleX Angle %5.2f   CFangleY Angle %5.2f  #" % (CFangleX,CFangleY)
 
     if 1:                       #Change to '0' to stop  showing the heading
         outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
 
-    if 0:                       #Change to '0' to stop  showing the angles from the Kalman filter
+    if 1:                       #Change to '0' to stop  showing the angles from the Kalman filter
         outputString +="# kalmanX %5.2f   kalmanY %5.2f #" % (kalmanX,kalmanY)
 
-    # print(outputString)
-    # headingfunc()
+    print(outputString)
 
     #slow program down a bit, makes the output more readable
-    # time.sleep(0.03)
-    child_conn.send(tiltCompensatedHeading)
-    child_conn.close()
+    time.sleep(0.03)
