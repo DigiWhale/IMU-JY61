@@ -3,7 +3,7 @@ import serial
 import binascii
 import time
 
-def open_serial_connection_and_print_output(angle_list, velocity_list, accel_list):
+def open_serial_connection_and_print_output(angle_list, velocity_list, accel_list, print=False):
     """
     Opens a serial connection to the IMU
     """
@@ -71,12 +71,13 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
             angle_list[:] = angle.items()
             velocity_list[:] = velocity.items()
             accel_list[:] = accel.items()
-            # for key, value in angle.items():
-            #   print(key, ' : ', value)
-            # for key, value in velocity.items():
-            #   print(key, ' : ', value)
-            # for key, value in accel.items():
-            #   print(key, ' : ', value)
+            if print:
+              for key, value in angle.items():
+                print(key, ' : ', value)
+              for key, value in velocity.items():
+                print(key, ' : ', value)
+              for key, value in accel.items():
+                print(key, ' : ', value)
             angle_ready, velocity_ready, accel_ready = False, False, False
             
 
@@ -88,4 +89,4 @@ if __name__ == '__main__':
     angle_list = []
     velocity_list = []
     accel_list = []
-    open_serial_connection_and_print_output(angle_list, velocity_list, accel_list)
+    open_serial_connection_and_print_output(angle_list, velocity_list, accel_list, print=True)
