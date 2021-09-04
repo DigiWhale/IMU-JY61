@@ -37,6 +37,8 @@ while True:
             break
         except:
           print(sys.exc_info())
+        if event.is_set():
+            break
     except KeyboardInterrupt:
         event.set()
         break
