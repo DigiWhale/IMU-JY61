@@ -8,7 +8,7 @@ velocity = []
 accel = []
 angle = []
 compass = []
-t = Thread(target=open_serial_connection_and_print_output, args=(velocity, angle, accel, ))
+t = Thread(target=open_serial_connection_and_print_output, args=(angle, velocity, accel, ))
 b = Thread(target=get_compass_value, args=(compass, ))
 t.start()
 b.start()
