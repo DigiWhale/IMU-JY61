@@ -85,5 +85,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
       print('Serial connection closed')
     
 if __name__ == '__main__':
-    data_array = []
-    open_serial_connection_and_print_output(data_array)
+    angle_list = []
+    velocity_list = []
+    accel_list = []
+    open_serial_connection_and_print_output(angle_list, velocity_list, accel_list)
