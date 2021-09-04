@@ -14,7 +14,8 @@ b = Thread(target=main, args=(compass, ))
 t.start()
 b.start()
 init_compass = False
-sleep(5)
+print('Setting IMU heading offset...')
+sleep(2)
 while True:
     try:
         # print(compass, velocity, angle, accel)
@@ -23,6 +24,7 @@ while True:
             offset = round((angle[2][1]+180) - compass[0][1]) - compass[0][1]
             init_compass = True
           heading = compass[0][1] - ((angle[2][1]+180) - compass[0][1])
+          imu_heading = angle[2][1] + 180 - offset
           print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]-offset))
           print('difference', round((angle[2][1]+180) - compass[0][1]-offset) - round(compass[0][1]))
           sleep(0.01)
