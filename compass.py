@@ -10,6 +10,6 @@ def get_compass_value(compass):
       if num > 360:
         num == 0
       num += 1
-      compass[:] = {'heading': 0}.items()
+      compass[:] = {'heading': 90}.items()
       time.sleep(1)
       
