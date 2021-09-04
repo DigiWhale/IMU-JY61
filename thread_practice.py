@@ -18,6 +18,7 @@ while True:
         try:
           heading = compass[0][1] + angle[2][1]
           print(heading)
+          sleep(0.01)
         except:
           print('passed')
     except KeyboardInterrupt:
