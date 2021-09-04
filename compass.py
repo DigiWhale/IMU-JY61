@@ -7,5 +7,5 @@ def get_compass_value(compass):
     """
     while True:
       compass[:] = {'heading': 0}.items()
-      time.sleep(0.001)
+      time.sleep(0.01)
       
