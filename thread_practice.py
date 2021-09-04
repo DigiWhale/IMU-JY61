@@ -16,7 +16,7 @@ while True:
     try:
         # print(compass, velocity, angle, accel)
         try:
-          heading = angle[2]
+          heading = compass[0][1] - (angle[2] - compass[0][1])
           print(heading)
           sleep(0.01)
         except:
