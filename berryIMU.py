@@ -36,12 +36,12 @@ AA =  0.40      # Complementary filter constant
 # Calibrating the compass isnt mandatory, however a calibrated
 # compass will result in a more accurate heading value.
 
-magXmin =  0
-magYmin =  0
-magZmin =  0
-magXmax =  0
-magYmax =  0
-magZmax =  0
+magXmin = -755
+magYmin = 1186
+magZmin = -2787
+magXmax = -661
+magYmax = 1274
+magZmax = -2478
 
 
 '''
