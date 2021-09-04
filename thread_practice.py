@@ -12,12 +12,17 @@ t = Thread(target=open_serial_connection_and_print_output, args=(angle, velocity
 b = Thread(target=get_compass_value, args=(compass, ))
 t.start()
 b.start()
+init_compass = False
+sleep(5)
 while True:
     try:
+      if init_compass == False:
+        offset = compass[0][1] - round((angle[2][1]+180) - compass[0][1])
+        init_compass = True
         # print(compass, velocity, angle, accel)
         try:
           heading = compass[0][1] - ((angle[2][1]+180) - compass[0][1])
-          print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]))
+          print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]-offset))
           sleep(0.01)
         except:
           print('passed')
