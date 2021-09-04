@@ -292,11 +292,11 @@ def main(data_array):
 
         if 1:                       #Change to '0' to stop  showing the heading
             # outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
-            data_array[:] = {'heading': tiltCompensatedHeading}
+            data_array[:] = {'heading': tiltCompensatedHeading}.items()
         if 0:                       #Change to '0' to stop  showing the angles from the Kalman filter
             outputString +="# kalmanX %5.2f   kalmanY %5.2f #" % (kalmanX,kalmanY)
 
-        print(outputString)
+        # print(outputString)
 
         #slow program down a bit, makes the output more readable
         time.sleep(0.03)
