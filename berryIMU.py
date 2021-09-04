@@ -293,7 +293,7 @@ def main(data_array):
         if 1:                       #Change to '0' to stop  showing the heading
             # outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
             data_average.append(tiltCompensatedHeading)
-            if len(data_average) >= 10:
+            if len(data_average) >= 5:
                 avg = sum(data_average) / len(data_average)
                 data_array[:] = {'heading': avg}.items()
                 data_average = []
