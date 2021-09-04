@@ -35,6 +35,7 @@ while True:
             break
         except:
           print(sys.exc_info())
+          break
     except KeyboardInterrupt:
         event.set()
         t.join()
