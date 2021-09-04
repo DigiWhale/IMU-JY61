@@ -3,6 +3,7 @@ from time import sleep
 from Uart61 import open_serial_connection_and_print_output
 from compass import get_compass_value
 from berryIMU import main
+import sys
 event = Event()
 
 velocity = []
@@ -35,7 +36,7 @@ while True:
           if event.is_set():
             break
         except:
-          print('passed')
+          print(sys.exc_info()[0])
     except KeyboardInterrupt:
         event.set()
         break
