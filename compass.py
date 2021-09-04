@@ -5,7 +5,11 @@ def get_compass_value(compass):
     """
     Return the compass value of the current heading.
     """
+    num = 0
     while True:
-      compass[:] = {'heading': 90}.items()
-      time.sleep(0.01)
+      if num > 360:
+        num == 0
+      num += 1
+      compass[:] = {'heading': num}.items()
+      time.sleep(1)
       
