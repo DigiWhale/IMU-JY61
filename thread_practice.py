@@ -27,7 +27,7 @@ while True:
           heading = compass[0][1] - ((angle[2][1]+180) - compass[0][1])
           imu_heading = angle[2][1] - offset
           print('heading', heading)
-          print('compass', compass[0[1]])
+          print('compass', compass[0][1])
           print('imu_heading', imu_heading)
           # print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]-offset))
           print('difference', round((angle[2][1]+180) - compass[0][1]-offset) - round(compass[0][1]))
