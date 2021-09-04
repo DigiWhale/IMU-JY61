@@ -164,7 +164,6 @@ def main(data_array):
     kalmanY = 0.0
 
     a = datetime.datetime.now()
-    data_average = []
     while True:
 
 
@@ -293,10 +292,7 @@ def main(data_array):
         if 1:                       #Change to '0' to stop  showing the heading
             # outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
             data_average.append(tiltCompensatedHeading)
-            if len(data_average) >= 5:
-                avg = sum(data_average) / len(data_average)
-                data_array[:] = {'heading': avg}.items()
-                data_average = []
+            data_array[:] = {'heading': tiltCompensatedHeading}.items()
         if 0:                       #Change to '0' to stop  showing the angles from the Kalman filter
             outputString +="# kalmanX %5.2f   kalmanY %5.2f #" % (kalmanX,kalmanY)
 
