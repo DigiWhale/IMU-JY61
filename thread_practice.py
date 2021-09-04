@@ -24,6 +24,7 @@ while True:
             init_compass = True
           heading = compass[0][1] - ((angle[2][1]+180) - compass[0][1])
           print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]-offset))
+          print('difference', compass[0][1] - angle[2][1])
           sleep(0.01)
         except:
           print('passed')
