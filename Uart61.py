@@ -74,7 +74,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
             velocity_list[:] = velocity.items()
             accel_list[:] = accel.items()
             if print_data == True:
-              print(angle['wx'])
+              print(angle['wz'])
               # for key, value in angle.items():
               #   print(key, ' : ', value)
               # for key, value in velocity.items():
