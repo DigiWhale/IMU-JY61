@@ -17,7 +17,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
       velocity_ready = False
       angle_ready = False
       while True:
-          ser.flushInput()
+          ser.flushOutput()
           time.sleep(0.01)
           # initialize data buffer to store bytes
           data = []
