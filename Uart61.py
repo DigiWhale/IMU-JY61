@@ -26,7 +26,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
           # if c == b'':
           #     break
           # while the incoming byte is not the delimiter, add it to the data buffer
-          while ser.in_waiting > 0:
+          while ser.in_waiting < 44:
               data.append(ser.read(ser.in_waiting))
               # c = ser.read()
           # join the data buffer into a string
