@@ -32,8 +32,8 @@ while True:
           # print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]-offset))
           # print('difference', round((angle[2][1]+360 if angle[2][1] < 0 else angle[2][1]) - compass[0][1]-offset) - round(compass[0][1]))
           # print('#################################')
-          # sleep(0.01)
           print(angle, compass)
+          sleep(0.001)
           if event.is_set():
             break
         except:
