@@ -23,8 +23,8 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
           ser.flushOutput()
           c = ser.read()
           # if no bytes are available, break out of loop
-          if c == b'':
-              break
+          # if c == b'':
+          #     break
           # while the incoming byte is not the delimiter, add it to the data buffer
           while ser.in_waiting > 0:
               data.append(c)
