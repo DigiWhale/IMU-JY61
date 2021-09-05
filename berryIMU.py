@@ -148,7 +148,7 @@ def kalmanFilterX ( accAngle, gyroRate, DT):
 
     return KFangleX
 
-def main(data_array):
+def main(data_array, print_data=False):
     IMU.detectIMU()     #Detect if BerryIMU is connected.
     if(IMU.BerryIMUversion == 99):
         print(" No BerryIMU found... exiting ")
@@ -298,8 +298,10 @@ def main(data_array):
         # print(outputString)
 
         #slow program down a bit, makes the output more readable
+        if print_data:
+            print(data_array)
         time.sleep(0.001)
         
 if __name__ == "__main__":
     test = []
-    main(test)
+    main(test, print_data=True)
