@@ -16,23 +16,24 @@ t.start()
 b.start()
 init_compass = False
 print('Setting IMU heading offset...')
-sleep(2)
+# sleep(2)
 while True:
     try:
         # print(compass, velocity, angle, accel)
         try:
-          if init_compass == False:
-            offset = round((angle[2][1]+180) - compass[0][1]) - compass[0][1]
-            init_compass = True
-          heading = compass[0][1] - ((angle[2][1]+180) - compass[0][1])
-          imu_heading = angle[2][1] - offset
-          negative = round(angle[2][1] + 360)
-          positive = round(angle[2][1])
-          print('heading', round(heading), 'compass', round(compass[0][1]), 'imu_heading', round(imu_heading), 'imu_compensated',  (negative if angle[2][1] < 0 else positive))
+          # if init_compass == False:
+          #   offset = round((angle[2][1]+180) - compass[0][1]) - compass[0][1]
+          #   init_compass = True
+          # heading = compass[0][1] - ((angle[2][1]+180) - compass[0][1])
+          # imu_heading = angle[2][1] - offset
+          # negative = round(angle[2][1] + 360)
+          # positive = round(angle[2][1])
+          # print('heading', round(heading), 'compass', round(compass[0][1]), 'imu_heading', round(imu_heading), 'imu_compensated',  (negative if angle[2][1] < 0 else positive))
           # print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]-offset))
           # print('difference', round((angle[2][1]+360 if angle[2][1] < 0 else angle[2][1]) - compass[0][1]-offset) - round(compass[0][1]))
           # print('#################################')
           # sleep(0.01)
+          print(angle, compass)
           if event.is_set():
             break
         except:
