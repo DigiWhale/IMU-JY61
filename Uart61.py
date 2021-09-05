@@ -17,6 +17,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
       velocity_ready = False
       angle_ready = False
       while True:
+          print('here')
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
@@ -28,6 +29,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
           # while the incoming byte is not the delimiter, add it to the data buffer
           while ser.in_waiting < 44:
               data.append(ser.read(ser.in_waiting))
+              print('there')
               # c = ser.read()
           # join the data buffer into a string
           data_string = b''.join(data)
