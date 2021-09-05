@@ -10,27 +10,25 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
     # Open the serial connection
     ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=10)
     # Flush the buffers
-    # ser.flushInput()
-    # ser.flushOutput()
+    ser.flushInput()
+    ser.flushOutput()
     try:
       accel_ready = False
       velocity_ready = False
       angle_ready = False
       while True:
-          print('here')
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
-          # ser.flushOutput()
-          # c = ser.read()
+          ser.flushOutput()
+          c = ser.read()
           # if no bytes are available, break out of loop
-          # if c == b'':
-          #     break
+          if c == b'':
+              break
           # while the incoming byte is not the delimiter, add it to the data buffer
-          while ser.in_waiting < 44:
-              data.append(ser.read(ser.in_waiting))
-              print('there')
-              # c = ser.read()
+          while c != b'U' and c != b'':
+              data.append(c)
+              c = ser.read()
           # join the data buffer into a string
           data_string = b''.join(data)
           # match data bytes to chipset format for Wit Motion WT61 IMU
