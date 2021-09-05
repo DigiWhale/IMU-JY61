@@ -299,3 +299,7 @@ def main(data_array):
 
         #slow program down a bit, makes the output more readable
         time.sleep(0.001)
+        
+if __name__ == "__main__":
+    test = []
+    main(test)
