@@ -10,16 +10,11 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
     # Open the serial connection
     ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1)
     print('connected to IMU on /dev/ttyUSB0')
-    time.sleep(1)
+    time.sleep(.5)
     ser.close()
-    # ser.reset_input_buffer()
-    # ser.reset_output_buffer()
-    # Flush the buffers
-    # ser.flushInput()
-    # ser.flushOutput()
-    time.sleep(1)
+    time.sleep(.5)
     ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1)
-    time.sleep(1)
+    time.sleep(.5)
 
     try:
       accel_ready = False
@@ -27,12 +22,9 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
       angle_ready = False
       while True:
           time.sleep(0.001)
-          # ser.reset_input_buffer()
-          # ser.flushOutput()
           # initialize data buffer to store bytes
           data = []
           # start reading bytes
-          # ser.flushOutput()
           c = ser.read()
           # if no bytes are available, break out of loop
           if c == b'':
@@ -50,7 +42,6 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
           reg_3 = data_string[5:7]
           # reg_4 = data_string[7:9]
           # checksum = data_string[9:10]
-                    
           # if accel data is available, print it
           if sensor == b'51' and accel_ready == False:
             try:
