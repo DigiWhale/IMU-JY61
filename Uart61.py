@@ -8,15 +8,16 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
     Opens a serial connection to the IMU
     """
     # Open the serial connection
-    ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=10)
+    ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1)
     print('connected to IMU on /dev/ttyUSB0')
     time.sleep(1)
     ser.write(b'\r\n')
-    ser.reset_input_buffer()
-    ser.reset_output_buffer()
+    # ser.reset_input_buffer()
+    # ser.reset_output_buffer()
     # Flush the buffers
     # ser.flushInput()
     # ser.flushOutput()
+    time.sleep(1)
     try:
       accel_ready = False
       velocity_ready = False
