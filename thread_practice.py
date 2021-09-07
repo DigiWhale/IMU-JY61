@@ -5,6 +5,7 @@ from compass import get_compass_value
 from berryIMU import main
 import sys
 import redis
+import json
 
 def open_file_and_log_data(filename, log_data_event):
     with open(filename, 'w') as f:
@@ -41,7 +42,7 @@ while True:
           # print('#################################')
           print(angle, compass)
           # open_file_and_log_data('/home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
-          r.publish('my-channel', angle[2][1])
+          r.publish('my-channel', json.dumps({"heading": compass[0][1], "velocity": velocity[0][1], "accel": accel[0][1]}))
           sleep(0.001)
           if event.is_set():
             break
