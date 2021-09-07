@@ -12,6 +12,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
     print('connected to IMU on /dev/ttyUSB0')
     time.sleep(1)
     ser.reset_input_buffer()
+    ser.reset_output_buffer()
     # Flush the buffers
     # ser.flushInput()
     # ser.flushOutput()
