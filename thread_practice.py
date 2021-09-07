@@ -41,7 +41,7 @@ while True:
           # print('#################################')
           print(angle, compass)
           # open_file_and_log_data('/home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
-          r.publish('my-channel', str(angle[2][1]))
+          r.publish('my-channel', int(angle[2][1]))
           sleep(0.001)
           if event.is_set():
             break
