@@ -38,7 +38,7 @@ while True:
           # print('difference', round((angle[2][1]+360 if angle[2][1] < 0 else angle[2][1]) - compass[0][1]-offset) - round(compass[0][1]))
           # print('#################################')
           print(angle, compass)
-          open_file_and_log_data('~/Desktop/data.txt', (compass, velocity, angle, accel))
+          open_file_and_log_data('home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
           sleep(0.001)
           if event.is_set():
             break
