@@ -56,22 +56,28 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
               pass
 
           elif sensor == b'52' and velocity_ready == False:
-            dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*2000, 2)
-            dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*2000, 2)
-            dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*2000, 2)
-            # dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
-            # dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
-            velocity = {'vx': dec_reg_1, 'vy': dec_reg_2, 'vz': dec_reg_3}
-            velocity_ready = True
+            try:
+              dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*2000, 2)
+              dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*2000, 2)
+              dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*2000, 2)
+              # dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
+              # dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
+              velocity = {'vx': dec_reg_1, 'vy': dec_reg_2, 'vz': dec_reg_3}
+              velocity_ready = True
+            except:
+              pass
 
           elif sensor == b'53' and angle_ready == False:
-            dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*180, 2)
-            dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*180, 2)
-            dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*180, 2)
-            # dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
-            # dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
-            angle = {'wx': dec_reg_1, 'wy': dec_reg_2, 'wz': dec_reg_3}
-            angle_ready = True
+            try:
+              dec_reg_1 = round(int.from_bytes(reg_1, byteorder='little', signed=True)/32768*180, 2)
+              dec_reg_2 = round(int.from_bytes(reg_2, byteorder='little', signed=True)/32768*180, 2)
+              dec_reg_3 = round(int.from_bytes(reg_3, byteorder='little', signed=True)/32768*180, 2)
+              # dec_reg_4 = round(int.from_bytes(reg_4, byteorder='little', signed=True)/340+36.53, 2)
+              # dec_checksum = round(int.from_bytes(checksum, byteorder='little', signed=False), 2)
+              angle = {'wx': dec_reg_1, 'wy': dec_reg_2, 'wz': dec_reg_3}
+              angle_ready = True
+            except:
+              pass
           
           if angle_ready and velocity_ready and accel_ready:
             angle_list[:] = angle.items()
