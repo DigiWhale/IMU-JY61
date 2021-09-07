@@ -4,13 +4,15 @@ from Uart61 import open_serial_connection_and_print_output
 from compass import get_compass_value
 from berryIMU import main
 import sys
+import redis
 
 def open_file_and_log_data(filename, log_data_event):
     with open(filename, 'w') as f:
         f.write(str(log_data_event) + '\n')
 
+r = redis.Redis(host="localhost", port=6379, db=0)
+r.pubsub(ignore_subscribe_messages=True)
 event = Event()
-
 velocity = []
 accel = []
 angle = []
@@ -39,6 +41,7 @@ while True:
           # print('#################################')
           print(angle, compass)
           open_file_and_log_data('/home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
+          r.publish('my-channel', '{i}'.format(i = (compass, velocity, angle, accel)))
           sleep(0.001)
           if event.is_set():
             break
