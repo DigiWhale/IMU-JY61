@@ -46,7 +46,7 @@ while True:
             "heading": compass[0][1],
             "velocity": velocity[0][1],
             "accel": accel[0][1],
-            'rotation': angle[0][2]
+            'rotation': angle[2][1]
             }))
           sleep(0.001)
           if event.is_set():
