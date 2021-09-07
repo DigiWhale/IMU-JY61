@@ -42,7 +42,7 @@ while True:
           # print('#################################')
           print(angle, compass)
           # open_file_and_log_data('/home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
-          r.publish('my-channel', json.dumps({"heading": compass[0][1], "velocity": velocity[0][1], "accel": accel[0][1]}))
+          r.publish('my-channel', json.dumps({"heading": compass[0][1]} + velocity + angle + accel))
           sleep(0.001)
           if event.is_set():
             break
