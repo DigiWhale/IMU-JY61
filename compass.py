@@ -15,7 +15,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
     time.sleep(.5)
     ser = serial.Serial(port='/dev/ttyUSB1', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=1)
     time.sleep(.5)
-    print(ser.read(44))
+    print(ser.read(1000))
 
     try:
       accel_ready = False
