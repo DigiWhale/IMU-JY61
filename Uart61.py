@@ -11,6 +11,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
     ser = serial.Serial(port='/dev/ttyUSB0', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=10)
     print('connected to IMU on /dev/ttyUSB0')
     time.sleep(1)
+    ser.write(b'\r\n')
     ser.reset_input_buffer()
     ser.reset_output_buffer()
     # Flush the buffers
