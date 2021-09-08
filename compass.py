@@ -32,8 +32,7 @@ def open_serial_connection_and_print_output(angle_list, velocity_list, accel_lis
           if c == b'':
               break
           # while the incoming byte is not the delimiter, add it to the data buffer
-          while c != b'U' and c != b'\x1b':
-              print(c)
+          while c != b'U' and c != b'':
               data.append(c)
               c = ser.read()
           # join the data buffer into a string
