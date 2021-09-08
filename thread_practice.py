@@ -1,7 +1,7 @@
 from threading import Thread, Event
 from time import sleep
 from Uart61 import open_serial_connection_and_print_output
-from compass import get_compass_value
+# from compass import get_compass_value
 from berryIMU import main
 import sys
 import redis
