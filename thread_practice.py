@@ -6,6 +6,7 @@ from berryIMU import main
 import sys
 import redis
 import json
+from datetime import datetime
 
 def open_file_and_log_data(filename, log_data_event):
     with open(filename, 'w') as f:
@@ -40,8 +41,9 @@ while True:
           # print(round(heading), round(compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]), round(angle[2][1] - compass[0][1]), round((angle[2][1]+180) - compass[0][1]-offset))
           # print('difference', round((angle[2][1]+360 if angle[2][1] < 0 else angle[2][1]) - compass[0][1]-offset) - round(compass[0][1]))
           # print('#################################')
+          time = datetime.now()
           print(angle, compass)
-          r.set('heading', compass[0][1])
+          r.hmset('angle', dict(angle))
           # open_file_and_log_data('/home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
           # r.publish('my-channel', json.dumps({
           #   "heading": compass[0][1],
