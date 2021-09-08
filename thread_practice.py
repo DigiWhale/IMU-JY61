@@ -41,10 +41,7 @@ while True:
           # print('difference', round((angle[2][1]+360 if angle[2][1] < 0 else angle[2][1]) - compass[0][1]-offset) - round(compass[0][1]))
           # print('#################################')
           print(angle, compass)
-          r.set('compass',''.join(compass))
-          r.set('angle',''.join(angle))
-          r.set('velocity',''.join(velocity))
-          r.set('accel',''.join(accel))
+          r.set('heading', compass[0][1])
           # open_file_and_log_data('/home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
           # r.publish('my-channel', json.dumps({
           #   "heading": compass[0][1],
