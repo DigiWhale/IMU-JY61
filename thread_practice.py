@@ -45,7 +45,8 @@ while True:
           angle.append(('timestamp', time.strftime("%d/%m/%Y %H:%M:%S")))
           accel.append(('timestamp', time.strftime("%d/%m/%Y %H:%M:%S")))
           velocity.append(('timestamp', time.strftime("%d/%m/%Y %H:%M:%S")))
-          compass.append(('timestamp', time.strftime("%d/%m/%Y %H:%M:%S")))
+          if len(compass) < 2:
+            compass.append(('timestamp', time.strftime("%d/%m/%Y %H:%M:%S")))
           print(angle, compass)
           r.hmset('angle', dict(angle))
           r.hmset('compass', dict(compass))
