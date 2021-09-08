@@ -11,8 +11,8 @@ def open_file_and_log_data(filename, log_data_event):
     with open(filename, 'w') as f:
         f.write(str(log_data_event) + '\n')
 
-r = redis.Redis(host="localhost", port=6379, db=0)
-r.pubsub(ignore_subscribe_messages=True)
+r = redis.Redis(host="192.168.1.4", port=6379, db=0, password='Redis2019!')
+# r.pubsub(ignore_subscribe_messages=True)
 event = Event()
 velocity = []
 accel = []
@@ -41,13 +41,14 @@ while True:
           # print('difference', round((angle[2][1]+360 if angle[2][1] < 0 else angle[2][1]) - compass[0][1]-offset) - round(compass[0][1]))
           # print('#################################')
           print(angle, compass)
+          r.set('foo','bar')
           # open_file_and_log_data('/home/pi/Desktop/data.txt', (compass, velocity, angle, accel))
-          r.publish('my-channel', json.dumps({
-            "heading": compass[0][1],
-            "velocity": velocity[0][1],
-            "accel": accel[0][1],
-            'rotation': angle[2][1]
-            }))
+          # r.publish('my-channel', json.dumps({
+          #   "heading": compass[0][1],
+          #   "velocity": velocity[0][1],
+          #   "accel": accel[0][1],
+          #   'rotation': angle[2][1]
+          #   }))
           sleep(0.001)
           if event.is_set():
             break
@@ -55,8 +56,6 @@ while True:
           print(sys.exc_info())
     except KeyboardInterrupt:
         event.set()
-        t.join()
-        b.join()
         break
 t.join()
 b.join()
