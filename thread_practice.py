@@ -42,7 +42,7 @@ while True:
           # print('difference', round((angle[2][1]+360 if angle[2][1] < 0 else angle[2][1]) - compass[0][1]-offset) - round(compass[0][1]))
           # print('#################################')
           time = datetime.now()
-          angle.append(('time', time))
+          angle.append(('time', time.strftime("%d/%m/%Y %H:%M:%S")))
           print(angle, compass)
           r.hmset('angle', dict(angle))
           # r.hmset('angle', dict(angle))
