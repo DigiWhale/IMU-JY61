@@ -64,6 +64,7 @@ while True:
             break
         except:
           print(sys.exc_info())
+          open_file_and_log_data('/home/pi/Desktop/error.txt', sys.exc_info())
     except KeyboardInterrupt:
         event.set()
         break
